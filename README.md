@@ -1,5 +1,9 @@
 # Group-04-License-Management
 
+## Group Members
+Pavithra Sureshkumar
+Ralf Zeller
+
 ## Features 
 - Develop a simple web based license management system
 - Manage users associted with customer companies 
