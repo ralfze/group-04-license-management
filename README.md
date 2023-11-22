@@ -1,6 +1,6 @@
 # Group-04-License-Management
 
-## Group Members
+## Group 04 Members
 - Pavithra Sureshkumar
 - Ralf Zeller
 
