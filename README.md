@@ -1,8 +1,8 @@
 # Group-04-License-Management
 
 ## Group 04 Members
-- Pavithra Sureshkumar
-- Ralf Zeller
+- Pavithra Sureshkumar 🐱
+- Ralf Zeller 🦊
 
 ## Features 
 - Develop a simple web based license management system
