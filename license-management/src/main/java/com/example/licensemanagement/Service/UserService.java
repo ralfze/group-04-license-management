@@ -52,5 +52,9 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    public Object getUserByLoginName(String loginName) {
+        return null;
+    }
 }
 
