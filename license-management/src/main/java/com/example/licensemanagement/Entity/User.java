@@ -92,5 +92,12 @@ public class User {
     public void setPhoneNumber2(Object phoneNumber22) {
     }
 
+    public CharSequence getPassword() {
+        return null;
+    }
+
+    public void setPassword(String encode) {
+    }
+
     // getters and setters
 }

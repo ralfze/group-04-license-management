@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.licensemanagement.Entity.User;
 import com.example.licensemanagement.Repo.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
