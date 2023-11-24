@@ -15,6 +15,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
@@ -24,6 +28,8 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        // Hash the password before saving it to the database
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -32,6 +38,7 @@ public class UserService {
             existingUser.setFirstName(updatedUser.getFirstName());
             existingUser.setLastName(updatedUser.getLastName());
             existingUser.setLoginName(updatedUser.getLoginName());
+            existingUser.setPassword(passwordEncoder.encode(updatedUser.getPassword())); // Hash the updated password
             existingUser.setToken(updatedUser.getToken());
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setAdmin(updatedUser.isAdmin());
