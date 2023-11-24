@@ -18,6 +18,7 @@ public class User {
     @Column(length = 30, unique = true)
     private String loginName;
 
+    @Column(nullable = false)
     private String password; // New field
 
     private String token;
