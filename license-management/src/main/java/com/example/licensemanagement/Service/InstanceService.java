@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.licensemanagement.Entity.Instance;
+import com.example.licensemanagement.Repo.InstanceRepository;
 
 import java.util.List;
 import java.util.Optional;

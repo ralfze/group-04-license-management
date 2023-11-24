@@ -23,5 +23,40 @@ public class Instance {
     @ManyToOne
     private Contract contract;
 
+    public Object getName() {
+        return null;
+    }
+
+    public void setName(Object name2) {
+    }
+
+    public Object getIpAddress() {
+        return null;
+    }
+
+    public void setIpAddress(Object ipAddress2) {
+    }
+
+    public Object getType() {
+        return null;
+    }
+
+    public void setType(Object type2) {
+    }
+
+    public Object getStatus() {
+        return null;
+    }
+
+    public void setStatus(Object status2) {
+    }
+
+    public Object getContract() {
+        return null;
+    }
+
+    public void setContract(Object contract2) {
+    }
+
     // getters and setters
 }
