@@ -100,5 +100,8 @@ public class User {
     public void setPassword(String encode) {
     }
 
+    public void setCustomer(Customer customer) {
+    }
+
     // getters and setters
 }

@@ -1,13 +1,15 @@
 package com.example.licensemanagement.Service;
 
+import com.example.licensemanagement.dto.CustomerDTO;
+import com.example.licensemanagement.Entity.Customer;
+import com.example.licensemanagement.Entity.User;
+import com.example.licensemanagement.Repo.CustomerRepository;
+import com.example.licensemanagement.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.licensemanagement.Entity.Customer;
-import com.example.licensemanagement.Repo.CustomerRepository;
-
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -15,31 +17,58 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+    @Autowired
+    private UserRepository userRepository;
+
+    public List<CustomerDTO> getAllCustomersWithUsers() {
+        List<Customer> customers = customerRepository.findAll();
+        return customers.stream()
+                .map(this::createCustomerDTO)
+                .collect(Collectors.toList());
     }
 
-    public Optional<Customer> getCustomerById(Long id) {
-        return customerRepository.findById(id);
+    public CustomerDTO getCustomerWithUsersById(Long customerId) {
+        Customer customer = customerRepository.findById(customerId).orElse(null);
+        return (customer != null) ? createCustomerDTO(customer) : null;
     }
 
-    public Customer createCustomer(Customer customer) {
-        return customerRepository.save(customer);
-    }
+    public CustomerDTO createCustomerWithUsers(CustomerDTO customerDTO) {
+        final Customer[] customerHolder = {customerDTO.getCustomer()}; // Declare as final array
+        List<User> users = customerDTO.getUsers();
 
-    public Optional<Customer> updateCustomer(Long id, Customer updatedCustomer) {
-        return customerRepository.findById(id).map(existingCustomer -> {
-            existingCustomer.setName(updatedCustomer.getName());
-            existingCustomer.setDepartment(updatedCustomer.getDepartment());
-            existingCustomer.setStreet(updatedCustomer.getStreet());
-            existingCustomer.setTown(updatedCustomer.getTown());
-            existingCustomer.setZipCode(updatedCustomer.getZipCode());
-            existingCustomer.setCountry(updatedCustomer.getCountry());
-            return customerRepository.save(existingCustomer);
+        // Save customer
+        customerHolder[0] = customerRepository.save(customerHolder[0]);
+
+        // Associate users with the customer and save them
+        users.forEach(user -> {
+            user.setCustomer(customerHolder[0]);
+            userRepository.save(user);
         });
+
+        return createCustomerDTO(customerHolder[0]);
     }
 
-    public void deleteCustomer(Long id) {
-        customerRepository.deleteById(id);
+    public CustomerDTO updateCustomerWithUsers(Long customerId, CustomerDTO updatedCustomerDTO) {
+        // Implement updating logic
+        // ...
+
+        return updatedCustomerDTO;
+    }
+
+    public void deleteCustomerWithUsers(Long customerId) {
+        // Implement deletion logic
+        // ...
+    }
+
+    public List<CustomerDTO> searchCustomersByName(String regex) {
+        // Implement search logic
+        // ...
+
+        return null;
+    }
+
+    private CustomerDTO createCustomerDTO(Customer customer) {
+        List<User> users = userRepository.findByCustomer(customer);
+        return new CustomerDTO(customer, users);
     }
 }

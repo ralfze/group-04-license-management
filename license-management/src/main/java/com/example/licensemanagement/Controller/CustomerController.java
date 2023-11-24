@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.licensemanagement.Entity.Customer;
 import com.example.licensemanagement.Service.CustomerService;
+import com.example.licensemanagement.dto.CustomerDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,33 +20,32 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping
-    public List<Customer> getAllCustomers() {
-        return customerService.getAllCustomers();
+    public List<CustomerDTO> getAllCustomers() {
+        return customerService.getAllCustomersWithUsers();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
-        Optional<Customer> customer = customerService.getCustomerById(id);
-        return customer.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    @GetMapping("/{customerId}")
+    public CustomerDTO getCustomerById(@PathVariable Long customerId) {
+        return customerService.getCustomerWithUsersById(customerId);
     }
 
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        Customer createdCustomer = customerService.createCustomer(customer);
-        return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
+    public CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO) {
+        return customerService.createCustomerWithUsers(customerDTO);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
-        Optional<Customer> updatedCustomer = customerService.updateCustomer(id, customer);
-        return updatedCustomer.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    @PutMapping("/{customerId}")
+    public CustomerDTO updateCustomer(@PathVariable Long customerId, @RequestBody CustomerDTO updatedCustomerDTO) {
+        return customerService.updateCustomerWithUsers(customerId, updatedCustomerDTO);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
-        customerService.deleteCustomer(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @DeleteMapping("/{customerId}")
+    public void deleteCustomer(@PathVariable Long customerId) {
+        customerService.deleteCustomerWithUsers(customerId);
+    }
+
+    @GetMapping("/search")
+    public List<CustomerDTO> searchCustomersByName(@RequestParam String regex) {
+        return customerService.searchCustomersByName(regex);
     }
 }
