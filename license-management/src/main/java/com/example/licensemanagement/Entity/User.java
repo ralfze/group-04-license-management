@@ -31,5 +31,64 @@ public class User {
     @Column(length = 15)
     private String phoneNumber2;
 
+    public void setId(Long id2) {
+    }
+
+    public Object getFirstName() {
+        return null;
+    }
+
+    public void setFirstName(Object firstName2) {
+    }
+
+    public Object getLastName() {
+        return null;
+    }
+
+    public void setLastName(Object lastName2) {
+    }
+
+    public Object getLoginName() {
+        return null;
+    }
+
+    public void setLoginName(Object loginName2) {
+    }
+
+    public Object getToken() {
+        return null;
+    }
+
+    public void setToken(Object token2) {
+    }
+
+    public Object getEmail() {
+        return null;
+    }
+
+    public void setEmail(Object email2) {
+    }
+
+    public Object isAdmin() {
+        return null;
+    }
+
+    public void setAdmin(Object admin) {
+    }
+
+    public Object getPhoneNumber1() {
+        return null;
+    }
+
+    public void setPhoneNumber1(Object phoneNumber12) {
+    }
+
+    public Object getPhoneNumber2() {
+        return null;
+    }
+
+    public void setPhoneNumber2(Object phoneNumber22) {
+    }
+
     // getters and setters
 }

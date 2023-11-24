@@ -26,5 +26,47 @@ public class Customer {
     @Column(length = 30)
     private String country;
 
+    public Object getName() {
+        return null;
+    }
+
+    public void setName(Object name2) {
+    }
+
+    public Object getDepartment() {
+        return null;
+    }
+
+    public void setDepartment(Object department2) {
+    }
+
+    public Object getStreet() {
+        return null;
+    }
+
+    public Object getTown() {
+        return null;
+    }
+
+    public void setStreet(Object street2) {
+    }
+
+    public void setTown(Object town2) {
+    }
+
+    public Object getZipCode() {
+        return null;
+    }
+
+    public Object getCountry() {
+        return null;
+    }
+
+    public void setZipCode(Object zipCode2) {
+    }
+
+    public void setCountry(Object country2) {
+    }
+
     // getters and setters
 }
