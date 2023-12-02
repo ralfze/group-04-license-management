@@ -2,7 +2,8 @@ package com.example.licensemanagement.Entity;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "UserEntity")
+@Table(name = "user_entity")
 public class User {
 
     @Id

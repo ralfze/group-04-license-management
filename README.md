@@ -15,8 +15,8 @@
 - Use ReactJS as client side technology
 
 ## OpenApi Notes
-http://localhost:8080/swagger-ui.html
-http://localhost:8080/api-docs
+http://localhost:8081/swagger-ui.html
+http://localhost:8081/api-docs
 
 ## PostgreSql Notes
 Database-name: licenseman
@@ -32,4 +32,7 @@ CREATE DATABASE licenseman;
 CREATE USER admin;
 # Change password of user admin to "password"
 \password admin
+# Grant privileges for admin
+GRANT CREATE ON SCHEMA public TO admin;
+
 ```

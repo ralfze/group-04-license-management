@@ -26,6 +26,7 @@ public class Contract {
     private String ipAddress3;
 
     @Lob
+    @Column(columnDefinition = "TEXT")
     private String licenseKey;
 
     @ManyToOne
