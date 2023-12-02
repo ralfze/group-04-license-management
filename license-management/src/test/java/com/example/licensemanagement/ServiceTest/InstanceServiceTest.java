@@ -1,4 +1,4 @@
-package com.example.licensemanagement.Service;
+package com.example.licensemanagement.ServiceTest;
 
 import com.example.licensemanagement.Entity.Instance;
 import com.example.licensemanagement.Repo.InstanceRepository;

@@ -1,4 +1,4 @@
-package com.example.licensemanagement.Service;
+package com.example.licensemanagement.ServiceTest;
 
 import com.example.licensemanagement.Entity.Customer;
 import com.example.licensemanagement.Entity.User;

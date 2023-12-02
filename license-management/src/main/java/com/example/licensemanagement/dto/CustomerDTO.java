@@ -10,7 +10,9 @@ public class CustomerDTO {
     private Customer customer;
     private List<User> users;
 
-    public CustomerDTO(Customer customer2, List<User> users2) {
+    public CustomerDTO(Customer customer, List<User> users) {
+        this.customer = customer;
+        this.users = users;
     }
     public Customer getCustomer() {
         return customer;
