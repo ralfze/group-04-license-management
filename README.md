@@ -14,6 +14,9 @@
 - Use Java 17 and SpringBoot
 - Use ReactJS as client side technology
 
+## OpenApi Notes
+http://localhost:8080/swagger-ui.html
+http://localhost:8080/api-docs
 
 ## PostgreSql Notes
 Database-name: licenseman
