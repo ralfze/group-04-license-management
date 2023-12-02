@@ -4,6 +4,7 @@ import com.example.licensemanagement.Entity.Instance;
 import com.example.licensemanagement.Repo.InstanceRepository;
 import com.example.licensemanagement.Service.InstanceService;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -11,7 +12,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -24,6 +24,11 @@ class InstanceServiceTest {
 
     @InjectMocks
     private InstanceService instanceService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     void getAllInstancesTest() {

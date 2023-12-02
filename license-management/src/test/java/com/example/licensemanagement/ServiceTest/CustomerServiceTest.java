@@ -6,6 +6,8 @@ import com.example.licensemanagement.Repo.CustomerRepository;
 import com.example.licensemanagement.Repo.UserRepository;
 import com.example.licensemanagement.Service.CustomerService;
 import com.example.licensemanagement.dto.CustomerDTO;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -29,6 +31,11 @@ class CustomerServiceTest {
 
     @InjectMocks
     private CustomerService customerService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     void getAllCustomersWithUsersTest() {

@@ -4,6 +4,7 @@ import com.example.licensemanagement.Entity.User;
 import com.example.licensemanagement.Repo.UserRepository;
 import com.example.licensemanagement.Service.UserService;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,6 +29,11 @@ class UserServiceTest {
 
     @InjectMocks
     private UserService userService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     void getAllUsersTest() {

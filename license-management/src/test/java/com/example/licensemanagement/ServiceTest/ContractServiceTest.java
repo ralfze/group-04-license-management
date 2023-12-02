@@ -4,6 +4,7 @@ import com.example.licensemanagement.Entity.Contract;
 import com.example.licensemanagement.Repo.ContractRepository;
 import com.example.licensemanagement.Service.ContractService;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -23,6 +24,11 @@ class ContractServiceTest {
 
     @InjectMocks
     private ContractService contractService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     void getAllContractsTest() {
