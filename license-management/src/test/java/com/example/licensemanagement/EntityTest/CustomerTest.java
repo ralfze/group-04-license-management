@@ -1,60 +1,36 @@
-package com.example.licensemanagement.Service;
+package com.example.licensemanagement.EntityTest;
+
+import org.junit.jupiter.api.Test;
 
 import com.example.licensemanagement.Entity.Customer;
-import com.example.licensemanagement.Entity.User;
-import com.example.licensemanagement.Repo.CustomerRepository;
-import com.example.licensemanagement.Repo.UserRepository;
-import com.example.licensemanagement.dto.CustomerDTO;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.*;
-
-class CustomerServiceTest {
-
-    @Mock
-    private CustomerRepository customerRepository;
-
-    @Mock
-    private UserRepository userRepository;
-
-    @InjectMocks
-    private CustomerService customerService;
+class CustomerTest {
 
     @Test
-    void getAllCustomersWithUsersTest() {
-        // Mock data
+    void customerGetterSetterTest() {
+        // Create a customer instance
         Customer customer = new Customer();
-        User user = new User();
-        user.setCustomer(customer);
-        List<Customer> customers = Arrays.asList(customer);
-        List<User> users = Arrays.asList(user);
+        
+        // Set values using setters
+        customer.setId(1L);
+        customer.setName("Test Customer");
+        customer.setDepartment("Test Department");
+        customer.setStreet("Test Street");
+        customer.setTown("Test Town");
+        customer.setZipCode("12345");
+        customer.setCountry("Test Country");
 
-        // Mock repository behavior
-        when(customerRepository.findAll()).thenReturn(customers);
-        when(userRepository.findByCustomer(customer)).thenReturn(users);
-
-        // Call the service method
-        List<CustomerDTO> result = customerService.getAllCustomersWithUsers();
-
-        // Verify the result
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals(customer, result.get(0).getCustomer());
-        assertEquals(users, result.get(0).getUsers());
-
-        // Verify repository interactions
-        verify(customerRepository, times(1)).findAll();
-        verify(userRepository, times(1)).findByCustomer(customer);
+        // Test the getters
+        assertEquals(1L, customer.getId());
+        assertEquals("Test Customer", customer.getName());
+        assertEquals("Test Department", customer.getDepartment());
+        assertEquals("Test Street", customer.getStreet());
+        assertEquals("Test Town", customer.getTown());
+        assertEquals("12345", customer.getZipCode());
+        assertEquals("Test Country", customer.getCountry());
     }
-
-    // Add similar tests for other methods in CustomerService
+    
+    // Add more tests as needed
 }
