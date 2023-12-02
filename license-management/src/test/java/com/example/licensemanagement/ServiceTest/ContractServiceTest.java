@@ -2,6 +2,8 @@ package com.example.licensemanagement.ServiceTest;
 
 import com.example.licensemanagement.Entity.Contract;
 import com.example.licensemanagement.Repo.ContractRepository;
+import com.example.licensemanagement.Service.ContractService;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
