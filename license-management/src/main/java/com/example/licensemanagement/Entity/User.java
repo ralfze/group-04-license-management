@@ -29,79 +29,92 @@ public class User {
     private boolean isAdmin;
 
     @Column(length = 15)
+    // Home Telefon
     private String phoneNumber1;
 
     @Column(length = 15)
+    // Mobile Phone
     private String phoneNumber2;
 
-    public void setId(Long id2) {
+    public Long getId() {
+        return id;
     }
 
-    public Object getFirstName() {
-        return null;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setFirstName(Object firstName2) {
+    public String getFirstName() {
+        return firstName;
     }
 
-    public Object getLastName() {
-        return null;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setLastName(Object lastName2) {
+    public String getLastName() {
+        return lastName;
     }
 
-    public Object getLoginName() {
-        return null;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setLoginName(Object loginName2) {
+    public String getLoginName() {
+        return loginName;
     }
 
-    public Object getToken() {
-        return null;
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
     }
 
-    public void setToken(Object token2) {
+    public String getPassword() {
+        return password;
     }
 
-    public Object getEmail() {
-        return null;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setEmail(Object email2) {
+    public String getToken() {
+        return token;
     }
 
-    public Object isAdmin() {
-        return null;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public void setAdmin(Object admin) {
+    public String getEmail() {
+        return email;
     }
 
-    public Object getPhoneNumber1() {
-        return null;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setPhoneNumber1(Object phoneNumber12) {
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
-    public Object getPhoneNumber2() {
-        return null;
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    public void setPhoneNumber2(Object phoneNumber22) {
+    public String getPhoneNumber1() {
+        return phoneNumber1;
     }
 
-    public CharSequence getPassword() {
-        return null;
+    public void setPhoneNumber1(String phoneNumber1) {
+        this.phoneNumber1 = phoneNumber1;
     }
 
-    public void setPassword(String encode) {
+    public String getPhoneNumber2() {
+        return phoneNumber2;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setPhoneNumber2(String phoneNumber2) {
+        this.phoneNumber2 = phoneNumber2;
     }
 
-    // getters and setters
+    
 }

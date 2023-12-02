@@ -34,6 +34,16 @@ public class Contract {
     @ManyToOne
     private User user2;
 
+    private double version;
+
+    public double getVersion() {
+        return version;
+    }
+
+    public void setVersion(double version) {
+        this.version = version;
+    }
+
     private int featureA;
 
     private int featureB;

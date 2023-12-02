@@ -23,39 +23,52 @@ public class Instance {
     @ManyToOne
     private Contract contract;
 
-    public Object getName() {
-        return null;
+    public Long getId() {
+        return id;
     }
 
-    public void setName(Object name2) {
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Object getIpAddress() {
-        return null;
+    public String getName() {
+        return name;
     }
 
-    public void setIpAddress(Object ipAddress2) {
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Object getType() {
-        return null;
+    public String getIpAddress() {
+        return ipAddress;
     }
 
-    public void setType(Object type2) {
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
     }
 
-    public Object getStatus() {
-        return null;
+    public String getType() {
+        return type;
     }
 
-    public void setStatus(Object status2) {
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Object getContract() {
-        return null;
+    public int getStatus() {
+        return status;
     }
 
-    public void setContract(Object contract2) {
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
     }
 
     // getters and setters
