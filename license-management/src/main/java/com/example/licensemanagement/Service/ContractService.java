@@ -37,6 +37,7 @@ public class ContractService {
             existingContract.setLicenseKey(updatedContract.getLicenseKey());
             existingContract.setUser1(updatedContract.getUser1());
             existingContract.setUser2(updatedContract.getUser2());
+            existingContract.setVersion(updatedContract.getVersion());
             existingContract.setFeatureA(updatedContract.getFeatureA());
             existingContract.setFeatureB(updatedContract.getFeatureB());
             existingContract.setFeatureC(updatedContract.getFeatureC());

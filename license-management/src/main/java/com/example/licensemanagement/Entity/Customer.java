@@ -26,46 +26,60 @@ public class Customer {
     @Column(length = 30)
     private String country;
 
-    public Object getName() {
-        return null;
+    public Long getId() {
+        return id;
     }
 
-    public void setName(Object name2) {
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Object getDepartment() {
-        return null;
+    public String getName() {
+        return name;
     }
 
-    public void setDepartment(Object department2) {
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Object getStreet() {
-        return null;
+    public String getDepartment() {
+        return department;
     }
 
-    public Object getTown() {
-        return null;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public void setStreet(Object street2) {
+    public String getStreet() {
+        return street;
     }
 
-    public void setTown(Object town2) {
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public Object getZipCode() {
-        return null;
+    public String getTown() {
+        return town;
     }
 
-    public Object getCountry() {
-        return null;
+    public void setTown(String town) {
+        this.town = town;
     }
 
-    public void setZipCode(Object zipCode2) {
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setCountry(Object country2) {
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     // getters and setters
