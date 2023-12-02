@@ -34,96 +34,106 @@ public class Contract {
     @ManyToOne
     private User user2;
 
-    private int integerField1;
+    private int featureA;
 
-    private int integerField2;
+    private int featureB;
 
-    private int integerField3;
+    private int featureC;
 
-    private int integerField4;
-
-    public Object getStartDate() {
-        return null;
+    public Long getId() {
+        return id;
     }
 
-    public void setStartDate(Object startDate2) {
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Object getEndDate() {
-        return null;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setEndDate(Object endDate2) {
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Object getIpAddress1() {
-        return null;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setIpAddress1(Object ipAddress12) {
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public Object getIpAddress2() {
-        return null;
+    public String getIpAddress1() {
+        return ipAddress1;
     }
 
-    public void setIpAddress2(Object ipAddress22) {
+    public void setIpAddress1(String ipAddress1) {
+        this.ipAddress1 = ipAddress1;
     }
 
-    public Object getIpAddress3() {
-        return null;
+    public String getIpAddress2() {
+        return ipAddress2;
     }
 
-    public void setIpAddress3(Object ipAddress32) {
+    public void setIpAddress2(String ipAddress2) {
+        this.ipAddress2 = ipAddress2;
     }
 
-    public Object getLicenseKey() {
-        return null;
+    public String getIpAddress3() {
+        return ipAddress3;
     }
 
-    public void setLicenseKey(Object licenseKey2) {
+    public void setIpAddress3(String ipAddress3) {
+        this.ipAddress3 = ipAddress3;
     }
 
-    public Object getUser1() {
-        return null;
+    public String getLicenseKey() {
+        return licenseKey;
     }
 
-    public void setUser1(Object user12) {
+    public void setLicenseKey(String licenseKey) {
+        this.licenseKey = licenseKey;
     }
 
-    public Object getUser2() {
-        return null;
+    public User getUser1() {
+        return user1;
     }
 
-    public void setUser2(Object user22) {
+    public void setUser1(User user1) {
+        this.user1 = user1;
     }
 
-    public Object getIntegerField1() {
-        return null;
+    public User getUser2() {
+        return user2;
     }
 
-    public void setIntegerField1(Object integerField12) {
+    public void setUser2(User user2) {
+        this.user2 = user2;
     }
 
-    public Object getIntegerField2() {
-        return null;
+    public int getFeatureA() {
+        return featureA;
     }
 
-    public void setIntegerField2(Object integerField22) {
+    public void setFeatureA(int featureA) {
+        this.featureA = featureA;
     }
 
-    public Object getIntegerField3() {
-        return null;
+    public int getFeatureB() {
+        return featureB;
     }
 
-    public void setIntegerField3(Object integerField32) {
+    public void setFeatureB(int featureB) {
+        this.featureB = featureB;
     }
 
-    public Object getIntegerField4() {
-        return null;
+    public int getFeatureC() {
+        return featureC;
     }
 
-    public void setIntegerField4(Object integerField42) {
+    public void setFeatureC(int featureC) {
+        this.featureC = featureC;
     }
 
     // getters and setters

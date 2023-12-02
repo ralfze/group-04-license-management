@@ -37,10 +37,9 @@ public class ContractService {
             existingContract.setLicenseKey(updatedContract.getLicenseKey());
             existingContract.setUser1(updatedContract.getUser1());
             existingContract.setUser2(updatedContract.getUser2());
-            existingContract.setIntegerField1(updatedContract.getIntegerField1());
-            existingContract.setIntegerField2(updatedContract.getIntegerField2());
-            existingContract.setIntegerField3(updatedContract.getIntegerField3());
-            existingContract.setIntegerField4(updatedContract.getIntegerField4());
+            existingContract.setFeatureA(updatedContract.getFeatureA());
+            existingContract.setFeatureB(updatedContract.getFeatureB());
+            existingContract.setFeatureC(updatedContract.getFeatureC());
             return contractRepository.save(existingContract);
         });
     }
