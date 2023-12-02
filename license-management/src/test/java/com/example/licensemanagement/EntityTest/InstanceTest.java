@@ -1,7 +1,10 @@
 // Instance entity test
-package com.example.licensemanagement.Entity;
+package com.example.licensemanagement.EntityTest;
 
 import org.junit.jupiter.api.Test;
+
+import com.example.licensemanagement.Entity.Instance;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class InstanceTest {
@@ -18,7 +21,6 @@ class InstanceTest {
         // Test the getters
         assertEquals(1L, instance.getId());
         // Test other getters...
-
     }
     
     // Add more tests as needed
