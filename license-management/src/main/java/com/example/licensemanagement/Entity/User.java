@@ -9,6 +9,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private Customer customer;
+
     @Column(length = 30)
     private String firstName;
 
@@ -116,5 +119,12 @@ public class User {
         this.phoneNumber2 = phoneNumber2;
     }
 
-    
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
 }
