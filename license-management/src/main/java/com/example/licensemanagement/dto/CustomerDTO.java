@@ -10,24 +10,24 @@ public class CustomerDTO {
     private Customer customer;
     private List<User> users;
 
-    public CustomerDTO(Customer customer, List<User> users) {
-        this.customer = customer;
-        this.users = users;
+    public CustomerDTO() {
     }
+
     public Customer getCustomer() {
         return customer;
     }
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-   
+
     public List<User> getUsers() {
         return users;
     }
+
     public void setUsers(List<User> users) {
         this.users = users;
     }
 
     // Constructors, getters, and setters
 }
-

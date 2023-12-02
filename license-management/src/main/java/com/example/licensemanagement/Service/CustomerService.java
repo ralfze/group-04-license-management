@@ -69,6 +69,9 @@ public class CustomerService {
 
     private CustomerDTO createCustomerDTO(Customer customer) {
         List<User> users = userRepository.findByCustomer(customer);
-        return new CustomerDTO(customer, users);
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setCustomer(customer);
+        customerDTO.setUsers(users);
+        return customerDTO;
     }
 }
