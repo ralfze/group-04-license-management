@@ -6,7 +6,7 @@ import com.example.licensemanagement.Service.CustomerService;
 import com.example.licensemanagement.dto.CustomerDTO;
 import java.util.List;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {

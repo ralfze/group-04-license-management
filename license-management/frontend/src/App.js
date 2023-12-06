@@ -1,16 +1,12 @@
+// frontend/src/App.js
 import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
+import { ChakraProvider, Box, Grid, theme } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AddCustomerComponent from './components/Customers/AddCustomerComponent';
+import EditCustomerComponent from './components/Customers/EditCustomerComponent';
+import CustomerListComponent from './components/Customers/CustomerListComponent';
+import CustomerScreen from './CustomerScreen';
 
 function App() {
   return (
@@ -18,21 +14,14 @@ function App() {
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
+          <Router>
+            <Routes>
+              <Route path="/customers" element={<CustomerListComponent />} />
+              <Route path="/customers/add" element={<AddCustomerComponent />} />
+              <Route path="/customers/edit/:id" element={<EditCustomerComponent />} />
+              <Route path="/" element={<CustomerScreen />} />            
+            </Routes>
+          </Router>
         </Grid>
       </Box>
     </ChakraProvider>

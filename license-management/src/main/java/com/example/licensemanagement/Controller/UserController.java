@@ -11,6 +11,7 @@ import com.example.licensemanagement.Service.UserService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
