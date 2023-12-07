@@ -3,12 +3,8 @@ import {
   ChakraProvider,
   Button,
   HStack,
-  Box,
-  Stack,
-  VStack,
   Input,
   Avatar,
-  Grid,
   Heading,
   Flex,
   Spacer,
@@ -35,7 +31,7 @@ const Root = () => {
         </HStack>
       </Flex>
 
-      <Flex as="nav" p="1em" alignItems="center">
+      <Flex as="nav" p="1em" alignItems="flex-start">
         <Flex spacing="1em" direction="column">
           <Button as={Link} to="/customers" variant="solid" size="md">
             Customers
@@ -51,8 +47,38 @@ const Root = () => {
           </Button>
         </Flex>
 
-        <Flex as="div" p="1em">
-          <HStack>
+        <Flex as="div" direction='column' paddingTop='0em' paddingLeft='1em' gap='0.5em'>
+          <HStack w='100%'>
+            <Heading as="h2" size="md">
+              Customer
+            </Heading>
+
+            <Heading as="h2" size="md">
+              Address a
+            </Heading>
+
+            <Heading as="h2" size="md">
+              Address b
+            </Heading>
+
+            <Button as={Link} to="edit" variant="solid" size="md">
+              Edit
+            </Button>
+
+            <Button as={Link} to="/delete" variant="solid" size="md">
+              Delete
+            </Button>
+
+            <Button as={Link} to="/contracts" variant="solid" size="md">
+              Contracts
+            </Button>
+
+            <Button as={Link} to="/users" variant="solid" size="md">
+              Users
+            </Button>
+          </HStack>
+
+          <HStack w='100%'>
             <Heading as="h2" size="md">
               Customer
             </Heading>
