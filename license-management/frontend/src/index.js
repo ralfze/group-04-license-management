@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import LoginScreen from './routes/LoginScreen';
 import CustomerScreen from './routes/CustomerScreen';
 import ContractScreen from './routes/ContractScreen';
+import InstanceScreen from './routes/InstanceScreen';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: '/login', element: <LoginScreen /> },
       { path: '/customers', element: <CustomerScreen /> },
       { path: '/contracts', element: <ContractScreen /> },
+      { path: '/instances', element: <InstanceScreen /> },
     ],
   },
 ]);
