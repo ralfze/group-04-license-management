@@ -16,7 +16,7 @@ const CustomerScreen = () => {
   return (
     <ChakraProvider>
       <Flex as="div" p="1em" alignItems="center" direction="row">
-        <Heading as="h1">License Management</Heading>
+        <Heading as="h1">Customers</Heading>
         <Spacer />
 
         <HStack spacing="1em">

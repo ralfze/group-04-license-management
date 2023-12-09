@@ -8,6 +8,7 @@ import {
   Heading,
   Flex,
   Spacer,
+  VStack,
 } from '@chakra-ui/react';
 import { IconLogout } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -16,12 +17,21 @@ const ContractScreen = () => {
   return (
     <ChakraProvider>
       <Flex as="div" p="1em" alignItems="center" direction="row">
-        <Heading as="h1">License Management</Heading>
+        <Heading as="h1">Contracts</Heading>
         <Spacer />
 
         <HStack spacing="1em">
           <Button as={Link} to="/add" variant="solid" size="md">
             Add
+          </Button>
+          <Button
+            as={Link}
+            to="/hide"
+            variant="solid"
+            size="md"
+            whiteSpace="wrap"
+          >
+            Hide expired
           </Button>
           <Input placeholder="filter"></Input>
           <Avatar></Avatar>
@@ -56,76 +66,124 @@ const ContractScreen = () => {
           gap="0.5em"
           flex="9"
         >
-          <HStack flex="1">
-            <Heading as="h2" size="md" flex="1">
+          <HStack flex="1" alignItems="start">
+            <Heading as="h2" size="md" flex="0" align="flex-start">
               Customer
             </Heading>
 
-            <Heading as="h2" size="md" flex="1">
-              Address a
-            </Heading>
+            <VStack flex="1">
+              <HStack flex="1">
+                <Heading as="h2" size="md" flex="1">
+                  Contract start
+                </Heading>
 
-            <Heading as="h2" size="md" flex="1">
-              Address b
-            </Heading>
+                <Heading as="h2" size="md" flex="1">
+                  Contract end
+                </Heading>
 
-            <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-              Edit
-            </Button>
+                <Heading as="h2" size="md" flex="1">
+                  Version
+                </Heading>
 
-            <Button as={Link} to="/delete" variant="solid" size="md" flex="1">
-              Delete
-            </Button>
+                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
+                  Edit
+                </Button>
 
-            <Button
-              as={Link}
-              to="/contracts"
-              variant="solid"
-              size="md"
-              flex="1"
-            >
-              Contracts
-            </Button>
+                <Button
+                  as={Link}
+                  to="/delete"
+                  variant="solid"
+                  size="md"
+                  flex="1"
+                >
+                  Delete
+                </Button>
 
-            <Button as={Link} to="/users" variant="solid" size="md" flex="1">
-              Users
-            </Button>
-          </HStack>
+                <Button
+                  as={Link}
+                  to="/contracts"
+                  variant="solid"
+                  size="md"
+                  flex="1"
+                >
+                  Details
+                </Button>
+              </HStack>
+              <HStack flex="1">
+                <Heading as="h2" size="md" flex="1">
+                  Contract start
+                </Heading>
 
-          <HStack flex="1">
-            <Heading as="h2" size="md" flex="1">
-              Customer
-            </Heading>
+                <Heading as="h2" size="md" flex="1">
+                  Contract end
+                </Heading>
 
-            <Heading as="h2" size="md" flex="1">
-              Address a
-            </Heading>
+                <Heading as="h2" size="md" flex="1">
+                  Version
+                </Heading>
 
-            <Heading as="h2" size="md" flex="1">
-              Address b
-            </Heading>
+                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
+                  Edit
+                </Button>
 
-            <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-              Edit
-            </Button>
+                <Button
+                  as={Link}
+                  to="/delete"
+                  variant="solid"
+                  size="md"
+                  flex="1"
+                >
+                  Delete
+                </Button>
 
-            <Button as={Link} to="/delete" variant="solid" size="md" flex="1">
-              Delete
-            </Button>
+                <Button
+                  as={Link}
+                  to="/contracts"
+                  variant="solid"
+                  size="md"
+                  flex="1"
+                >
+                  Details
+                </Button>
+              </HStack>
+              <HStack flex="1">
+                <Heading as="h2" size="md" flex="1">
+                  Contract start
+                </Heading>
 
-            <Button
-              as={Link}
-              to="/contracts"
-              variant="solid"
-              size="md"
-              flex="1"
-            >
-              Contracts
-            </Button>
+                <Heading as="h2" size="md" flex="1">
+                  Contract end
+                </Heading>
 
-            <Button as={Link} to="/users" variant="solid" size="md" flex="1">
-              Users
-            </Button>
+                <Heading as="h2" size="md" flex="1">
+                  Version
+                </Heading>
+
+                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
+                  Edit
+                </Button>
+
+                <Button
+                  as={Link}
+                  to="/delete"
+                  variant="solid"
+                  size="md"
+                  flex="1"
+                >
+                  Delete
+                </Button>
+
+                <Button
+                  as={Link}
+                  to="/contracts"
+                  variant="solid"
+                  size="md"
+                  flex="1"
+                >
+                  Details
+                </Button>
+              </HStack>
+            </VStack>
           </HStack>
         </Flex>
       </Flex>
