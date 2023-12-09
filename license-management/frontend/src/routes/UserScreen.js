@@ -24,15 +24,6 @@ const UserScreen = () => {
           <Button as={Link} to="/add" variant="solid" size="md">
             Add
           </Button>
-          <Button
-            as={Link}
-            to="/hide"
-            variant="solid"
-            size="md"
-            whiteSpace="wrap"
-          >
-            Hide expired
-          </Button>
           <Input placeholder="filter"></Input>
           <Avatar></Avatar>
           <Button as={Link} to="/login" variant="solid" size="md">
@@ -71,10 +62,9 @@ const UserScreen = () => {
               Customer
             </Heading>
 
-            <VStack flex="1">
-              <HStack flex="1">
-
-              <Heading as="h2" size="md" flex="1">
+            <VStack flex="1" alignItems="start">
+              <HStack flex="1" alignItems="start">
+                <Heading as="h2" size="md" flex="1" whiteSpace="nowrap">
                   User 1
                 </Heading>
 
@@ -82,9 +72,7 @@ const UserScreen = () => {
                   user1@custb.com
                 </Heading>
 
-                
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
+                <Button as={Link} to="edit" variant="solid" size="md" flex="1" >
                   Edit
                 </Button>
 
@@ -97,25 +85,16 @@ const UserScreen = () => {
                 >
                   Delete
                 </Button>
-
-                
               </HStack>
 
-              <HStack flex="1">
-
-              <Heading as="h2" size="md" flex="1">
-                  Instance BB
+              <HStack flex="1" alignItems="start">
+                <Heading as="h2" size="md" flex="1" whiteSpace="nowrap">
+                  User 2
                 </Heading>
 
                 <Heading as="h2" size="md" flex="1">
-                  Contract start
+                  user2@custb.com
                 </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract end
-                </Heading>
-
-                
 
                 <Button as={Link} to="edit" variant="solid" size="md" flex="1">
                   Edit
@@ -129,33 +108,16 @@ const UserScreen = () => {
                   flex="1"
                 >
                   Delete
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/contracts"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Details
                 </Button>
               </HStack>
-              <HStack flex="1">
-
-              <Heading as="h2" size="md" flex="1">
-                  Instance BC
+              <HStack flex="1" alignItems="start">
+                <Heading as="h2" size="md" flex="1" whiteSpace="nowrap">
+                  User 3
                 </Heading>
 
                 <Heading as="h2" size="md" flex="1">
-                  Contract start
+                  user3@custb.com
                 </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract end
-                </Heading>
-
-                
 
                 <Button as={Link} to="edit" variant="solid" size="md" flex="1">
                   Edit
@@ -169,16 +131,6 @@ const UserScreen = () => {
                   flex="1"
                 >
                   Delete
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/contracts"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Details
                 </Button>
               </HStack>
             </VStack>
