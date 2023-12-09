@@ -11,6 +11,7 @@ import com.example.licensemanagement.Service.InstanceService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/instances")
 public class InstanceController {
