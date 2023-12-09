@@ -1,107 +1,62 @@
-import { useState } from 'react';
-import {
-  Flex,
-  Heading,
-  Input,
-  Button,
-  InputGroup,
-  Stack,
-  InputLeftElement,
-  chakra,
-  Box,
-  Link,
-  Avatar,
-  FormControl,
-  FormHelperText,
-  InputRightElement,
-} from '@chakra-ui/react';
-import { FaUserAlt, FaLock } from 'react-icons/fa';
-import { ChakraProvider } from '@chakra-ui/provider';
-
-const CFaUserAlt = chakra(FaUserAlt);
-const CFaLock = chakra(FaLock);
+import React, { useState } from 'react';
+import { ChakraProvider, Box, Input, Button, Heading, VStack } from '@chakra-ui/react';
 
 const LoginScreen = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [loginName, setLoginName] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleShowClick = () => setShowPassword(!showPassword);
+  const handleLogin = () => {
+    // Perform login logic here
+    console.log(`Logging in with loginName: ${loginName} and password: ${password}`);
+  };
 
   return (
     <ChakraProvider>
-      <Flex
-        flexDirection="column"
-        width="100wh"
-        height="100vh"
-        backgroundColor="gray.200"
+      <Box
+        display="flex"
         justifyContent="center"
         alignItems="center"
+        height="100vh"
+        backgroundColor="dark"
       >
-        <Stack
-          flexDir="column"
-          mb="2"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Avatar bg="teal.500" />
-          <Heading color="teal.400">Welcome</Heading>
-          <Box minW={{ base: '90%', md: '468px' }}>
-            <form>
-              <Stack
-                spacing={4}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="md"
-              >
-                <FormControl>
-                  <InputGroup>
-                    <InputLeftElement
-                      pointerEvents="none"
-                      children={<CFaUserAlt color="gray.300" />}
-                    />
-                    <Input type="email" placeholder="email address" />
-                  </InputGroup>
-                </FormControl>
-                <FormControl>
-                  <InputGroup>
-                    <InputLeftElement
-                      pointerEvents="none"
-                      color="gray.300"
-                      children={<CFaLock color="gray.300" />}
-                    />
-                    <Input
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="Password"
-                    />
-                    <InputRightElement width="4.5rem">
-                      <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-                        {showPassword ? 'Hide' : 'Show'}
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
-                  <FormHelperText textAlign="right">
-                    <Link>forgot password?</Link>
-                  </FormHelperText>
-                </FormControl>
-                <Button
-                  borderRadius={0}
-                  type="submit"
-                  variant="solid"
-                  colorScheme="teal"
-                  width="full"
-                >
-                  Login
-                </Button>
-              </Stack>
-            </form>
+        <VStack spacing={4} align="stretch">
+          <Box border="1px solid"
+            borderStyle="dashed"
+            borderRadius="md"
+            p={4}
+            borderColor="purple.200"
+            position="relative"><Heading textAlign="center">License Management</Heading></Box>
+          <Box
+            border="1px solid"
+            borderRadius="md"
+            p={4}
+            borderColor="dark"
+            bg="dark"
+            position="relative"
+          >
+            <Heading size="md" textAlign="left" bg="dark" borderRadius="md" py={1}>
+              Login
+            </Heading>
+            <Input
+              type="text"
+              placeholder="Login Name"
+              value={loginName}
+              onChange={(e) => setLoginName(e.target.value)}
+              mb={2}
+            />
+            <Input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              mb={4}
+            />
+            <Button colorScheme="purple" onClick={handleLogin}>
+              Sign in 
+            </Button>
           </Box>
-        </Stack>
-        <Box>
-          New to us?{' '}
-          <Link color="teal.500" href="#">
-            Sign Up
-          </Link>
-        </Box>
-      </Flex>
+        </VStack>
+      </Box>
     </ChakraProvider>
   );
 };
