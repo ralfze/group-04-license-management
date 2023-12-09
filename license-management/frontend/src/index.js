@@ -4,9 +4,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root from './routes/CustomerScreen';
 import LoginScreen from './routes/LoginScreen';
 import CustomerScreen from './routes/CustomerScreen';
+import ContractScreen from './routes/ContractScreen';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -14,8 +14,8 @@ const root = ReactDOM.createRoot(container);
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <LoginScreen />,
     children: [
+      { path: '/login', element: <LoginScreen /> },
       { path: '/customers', element: <CustomerScreen /> },
       { path: '/contracts', element: <ContractScreen /> },
     ],
