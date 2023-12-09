@@ -25,7 +25,7 @@ const ContractScreen = () => {
           </Button>
           <Input placeholder="filter"></Input>
           <Avatar></Avatar>
-          <Button as={Link} to="/add" variant="solid" size="md">
+          <Button as={Link} to="/login" variant="solid" size="md">
             <IconLogout size="4em" />
           </Button>
         </HStack>
