@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { ChakraProvider, Box, Input, Button, Heading, VStack } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
   const [loginName, setLoginName] = useState('');
   const [password, setPassword] = useState('');
+  // Use the useNavigate hook to get the navigate function
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     // Perform login logic here
     console.log(`Logging in with loginName: ${loginName} and password: ${password}`);
+
+    // Redirect to the "/customers" route
+    navigate('/customers');
   };
 
   return (
