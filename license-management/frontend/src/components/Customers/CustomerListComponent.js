@@ -1,7 +1,7 @@
 // frontend/src/components/Customers/CustomerListComponent.js
 import React, { useState, useEffect } from 'react';
 import { Button, HStack, Heading, Flex } from '@chakra-ui/react';
-import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate
+import { Link } from 'react-router-dom'; // Import Link and useNavigate
 import CustomerService from '../../services/CustomerService';
 
 const CustomerListComponent = ({ navigate }) => {
@@ -47,11 +47,11 @@ const CustomerListComponent = ({ navigate }) => {
             {customer.customer.town}
           </Heading>
 
-          <Button as={Link} to={`/customers/edit/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`edit-${customer.customer.id}`}>
+          <Button as={Link} to={`edit/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`edit-${customer.customer.id}`}>
             Edit
           </Button>
 
-          <Button as={Link} to={`/delete/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`delete-${customer.customer.id}`}>
+          <Button as={Link} to={`delete/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`delete-${customer.customer.id}`}>
             Delete
           </Button>
 

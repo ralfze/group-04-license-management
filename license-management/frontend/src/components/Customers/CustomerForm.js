@@ -1,16 +1,19 @@
 import React from 'react';
-import { Box, Input, FormControl, FormLabel } from '@chakra-ui/react';
+import { VStack, Input, FormControl, FormLabel } from '@chakra-ui/react';
 
 const CustomerForm = ({ customer, setCustomer }) => {
   const handleChange = (e) => {
     setCustomer({
       ...customer,
-      [e.target.name]: e.target.value,
+      customer: {
+        ...customer.customer,
+        [e.target.name]: e.target.value,
+      },
     });
   };
 
   return (
-    <Box>
+    <VStack>
       {customer.customer && (
         <>
           <FormControl>
@@ -19,7 +22,7 @@ const CustomerForm = ({ customer, setCustomer }) => {
               type="text"
               name="name"
               placeholder="Customer Name"
-              value={customer.name || ''}
+              value={customer.customer.name || ''}
               onChange={handleChange}
             />
           </FormControl>
@@ -29,8 +32,19 @@ const CustomerForm = ({ customer, setCustomer }) => {
             <Input
               type="text"
               name="street"
-              placeholder="Customer Street"
-              value={customer.street || ''}
+              placeholder="Street"
+              value={customer.customer.street || ''}
+              onChange={handleChange}
+            />
+          </FormControl>
+
+          <FormControl mt={4}>
+            <FormLabel>Zipcode</FormLabel>
+            <Input
+              type="text"
+              name="zipCode"
+              placeholder="ZipCode"
+              value={customer.customer.zipCode || ''}
               onChange={handleChange}
             />
           </FormControl>
@@ -40,14 +54,25 @@ const CustomerForm = ({ customer, setCustomer }) => {
             <Input
               type="text"
               name="town"
-              placeholder="Customer Town"
-              value={customer.town || ''}
+              placeholder="Town"
+              value={customer.customer.town || ''}
+              onChange={handleChange}
+            />
+          </FormControl>
+
+          <FormControl mt={4}>
+            <FormLabel>Country</FormLabel>
+            <Input
+              type="text"
+              name="country"
+              placeholder="Country"
+              value={customer.customer.country || ''}
               onChange={handleChange}
             />
           </FormControl>
         </>
       )}
-    </Box>
+    </VStack>
   );
 };
 

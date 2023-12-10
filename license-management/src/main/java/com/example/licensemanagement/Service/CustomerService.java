@@ -1,13 +1,16 @@
 package com.example.licensemanagement.Service;
 
 import com.example.licensemanagement.dto.CustomerDTO;
+import com.example.licensemanagement.Entity.Contract;
 import com.example.licensemanagement.Entity.Customer;
 import com.example.licensemanagement.Entity.User;
+import com.example.licensemanagement.Repo.ContractRepository;
 import com.example.licensemanagement.Repo.CustomerRepository;
 import com.example.licensemanagement.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,11 +24,18 @@ public class CustomerService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ContractRepository contractRepository;
+
     public List<CustomerDTO> getAllCustomersWithUsers() {
         List<Customer> customers = customerRepository.findAll();
-        return customers.stream()
+        // Sort customers by ID
+        List<CustomerDTO> sortedCustomers = customers.stream()
                 .map(this::createCustomerDTO)
+                .sorted(Comparator.comparingLong(customerDTO -> customerDTO.getCustomer().getId()))
                 .collect(Collectors.toList());
+
+        return sortedCustomers;
     }
 
     public CustomerDTO getCustomerWithUsersById(Long customerId) {
@@ -34,7 +44,7 @@ public class CustomerService {
     }
 
     public CustomerDTO createCustomerWithUsers(CustomerDTO customerDTO) {
-        final Customer[] customerHolder = {customerDTO.getCustomer()}; // Declare as final array
+        final Customer[] customerHolder = { customerDTO.getCustomer() }; // Declare as final array
         List<User> users = customerDTO.getUsers();
 
         // Save customer
@@ -93,17 +103,50 @@ public class CustomerService {
         if (optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
 
+            // Log statements for debugging
+            System.out.println("Deleting customer with ID: " + customer.getId());
+
             // Delete associated users
             List<User> users = userRepository.findByCustomer(customer);
             for (User user : users) {
+                // Check if user is associated with a contract
+                // Set user_id to null for all contracts associated with the customer
+                List<Contract> contractsUser1 = contractRepository.findByUser1(user);
+                for (Contract contract : contractsUser1) {
+                    // Log statements for debugging
+                    System.out.println("Updating contract with ID: " + contract.getId());
+
+                    // Set the associated user to null
+                    contract.setUser1(null);
+
+                    // Save the updated contract
+                    contractRepository.save(contract);
+                }
+
+                // Set user_id to null for all contracts associated with the customer
+                List<Contract> contractsUser2 = contractRepository.findByUser2(user);
+                for (Contract contract : contractsUser2) {
+                    // Log statements for debugging
+                    System.out.println("Updating contract with ID: " + contract.getId());
+
+                    // Set the associated user to null
+                    contract.setUser2(null);
+
+                    // Save the updated contract
+                    contractRepository.save(contract);
+                }
+
+                // Log statements for debugging
+                System.out.println("Deleting user with ID: " + user.getId());
                 userRepository.delete(user);
             }
 
+            // Log statements for debugging
+            System.out.println("Deleting customer entity");
             // Delete the customer
             customerRepository.delete(customer);
         }
     }
-
 
     public List<CustomerDTO> searchCustomersByName(String name) {
         List<Customer> matchingCustomers = customerRepository.findByNameContainingIgnoreCase(name);
@@ -112,7 +155,6 @@ public class CustomerService {
                 .map(this::createCustomerDTO)
                 .collect(Collectors.toList());
     }
-
 
     private CustomerDTO createCustomerDTO(Customer customer) {
         List<User> users = userRepository.findByCustomer(customer);

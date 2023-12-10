@@ -1,6 +1,6 @@
 // frontend/src/components/Customers/EditCustomerComponent.js
 import React, { useEffect, useState } from 'react';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, ChakraProvider, HStack } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CustomerForm from './CustomerForm';
 import CustomerService from '../../services/CustomerService';
@@ -17,7 +17,7 @@ const EditCustomerComponent = () => {
       try {
         const response = await CustomerService.getCustomerById(customerId);
         setCustomer(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       } catch (error) {
         console.error('Error loading customer:', error);
       }
@@ -36,11 +36,20 @@ const EditCustomerComponent = () => {
     }
   };
 
+  const handleAbort = () => {
+    navigate('/customers');
+  }
+
   return (
-    <Box>
-      <CustomerForm customer={customer} setCustomer={setCustomer} />
-      <Button onClick={handleSave}>Save</Button>
-    </Box>
+    <ChakraProvider>
+      <Box>
+        <CustomerForm customer={customer} setCustomer={setCustomer} />
+        <HStack>
+          <Button onClick={handleSave}>Save</Button>
+          <Button onClick={handleAbort}>Abort</Button>
+        </HStack>
+      </Box>
+    </ChakraProvider>
   );
 };
 
