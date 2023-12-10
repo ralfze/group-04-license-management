@@ -1,8 +1,8 @@
 -- Insert sample data into the customer table
-INSERT INTO customer (id, name, street) VALUES
-  (1, 'Customer1', '123 First St, City A'),
-  (2, 'Customer2', '456 Second St, City B'),
-  (3, 'Customer3', '789 Third St, City C');
+INSERT INTO customer (id, name, street, town) VALUES
+  (1, 'Customer1', '123 First St', 'City A'),
+  (2, 'Customer2', '456 Second St', 'City B'),
+  (3, 'Customer3', '789 Third St', 'City C');
 
 -- Insert users associated with Customer1
 INSERT INTO user_entity (id, first_name, last_name, login_name, password, email, is_admin, phone_number1, phone_number2, customer_id) VALUES

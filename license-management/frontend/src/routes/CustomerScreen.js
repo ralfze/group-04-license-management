@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { IconLogout } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import CustomerListComponent from '../components/Customers/CustomerListComponent';
 
 const CustomerScreen = () => {
   return (
@@ -47,87 +48,7 @@ const CustomerScreen = () => {
             Users
           </Button>
         </Flex>
-
-        <Flex
-          as="div"
-          direction="column"
-          paddingTop="0em"
-          paddingLeft="1em"
-          gap="0.5em"
-          flex="9"
-        >
-          <HStack flex="1">
-            <Heading as="h2" size="md" flex="1">
-              Customer
-            </Heading>
-
-            <Heading as="h2" size="md" flex="1">
-              Address a
-            </Heading>
-
-            <Heading as="h2" size="md" flex="1">
-              Address b
-            </Heading>
-
-            <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-              Edit
-            </Button>
-
-            <Button as={Link} to="/delete" variant="solid" size="md" flex="1">
-              Delete
-            </Button>
-
-            <Button
-              as={Link}
-              to="/contracts"
-              variant="solid"
-              size="md"
-              flex="1"
-            >
-              Contracts
-            </Button>
-
-            <Button as={Link} to="/users" variant="solid" size="md" flex="1">
-              Users
-            </Button>
-          </HStack>
-
-          <HStack flex="1">
-            <Heading as="h2" size="md" flex="1">
-              Customer
-            </Heading>
-
-            <Heading as="h2" size="md" flex="1">
-              Address a
-            </Heading>
-
-            <Heading as="h2" size="md" flex="1">
-              Address b
-            </Heading>
-
-            <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-              Edit
-            </Button>
-
-            <Button as={Link} to="/delete" variant="solid" size="md" flex="1">
-              Delete
-            </Button>
-
-            <Button
-              as={Link}
-              to="/contracts"
-              variant="solid"
-              size="md"
-              flex="1"
-            >
-              Contracts
-            </Button>
-
-            <Button as={Link} to="/users" variant="solid" size="md" flex="1">
-              Users
-            </Button>
-          </HStack>
-        </Flex>
+        <CustomerListComponent />
       </Flex>
     </ChakraProvider>
   );

@@ -6,15 +6,18 @@ import CustomerForm from './CustomerForm';
 import CustomerService from '../../services/CustomerService';
 
 const EditCustomerComponent = () => {
-  const { id } = useParams();
+  const { customerId } = useParams();
   const [customer, setCustomer] = useState({});
   const navigate = useNavigate(); // Get the navigate function from the hook
+  // Now, you can use the customercustomerId in your component logic
+  //console.log('Customer customerId:', customerId);
 
   useEffect(() => {
     const loadCustomer = async () => {
       try {
-        const response = await CustomerService.getCustomerById(id);
+        const response = await CustomerService.getCustomerById(customerId);
         setCustomer(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error('Error loading customer:', error);
       }
@@ -22,11 +25,11 @@ const EditCustomerComponent = () => {
 
     loadCustomer();
 
-  }, [id, navigate]);
+  }, [customerId, navigate]);
 
   const handleSave = async () => {
     try {
-      await CustomerService.updateCustomer(id, customer);
+      await CustomerService.updateCustomer(customerId, customer);
       navigate('/customers');
     } catch (error) {
       console.error('Error updating customer:', error);
