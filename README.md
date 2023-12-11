@@ -36,3 +36,12 @@ CREATE USER admin;
 GRANT CREATE ON SCHEMA public TO admin;
 
 ```
+
+
+## React Notes
+Configure the baseURL for request from the frontend to the backend
+
+```bash
+#license-management/frontend/.env
+REACT_APP_API_BASE_URL="http://localhost:8081"
+```
