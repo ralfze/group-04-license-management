@@ -64,8 +64,6 @@ const ContractListComponent = ({ navigate }) => {
         </HStack>
       ))}
 
-
-
     </Flex>
 
   );

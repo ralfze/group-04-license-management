@@ -27,18 +27,18 @@ INSERT INTO user_entity (id, first_name, last_name, login_name, password, email,
 
 -- Insert contracts associated with Customer1
 INSERT INTO contract (id, start_date, end_date, ip_address1, ip_address2, ip_address3, user1_id, user2_id, customer_id, version, featurea, featureb, featurec) VALUES
-  (0, '2023-01-01', '2023-12-31', '192.168.1.1', '192.168.1.2', '192.168.1.3', 0, 1, 0, 1.0, 1, 0, 1),
-  (1, '2023-02-01', '2023-11-30', '192.168.2.1', '192.168.2.2', '192.168.2.3', 2, 3, 0, 1.1, 1, 1, 0);
+  (0, '2023-01-01', '2023-12-31', '192.168.1.1', '192.168.1.2', '192.168.1.3', 0, 1, 0, 1.0, 1, 2, 1),
+  (1, '2023-02-01', '2023-11-30', '192.168.2.1', '192.168.2.2', '192.168.2.3', 2, 3, 0, 1.1, 1, 1, 3);
 
 -- Insert contracts associated with Customer2
 INSERT INTO contract (id, start_date, end_date, ip_address1, ip_address2, ip_address3, user1_id, user2_id, customer_id, version, featurea, featureb, featurec) VALUES
   (2, '2023-03-01', '2023-10-31', '192.168.3.1', '192.168.3.2', '192.168.3.3', 4, 5, 1, 1.2, 0, 1, 1),
-  (3, '2023-04-01', '2023-09-30', '192.168.4.1', '192.168.4.2', '192.168.4.3', 6, 7, 1, 1.3, 1, 0, 1);
+  (3, '2023-04-01', '2023-09-30', '192.168.4.1', '192.168.4.2', '192.168.4.3', 6, 7, 1, 1.3, 1, 3, 1);
 
 -- Insert contracts associated with Customer3
 INSERT INTO contract (id, start_date, end_date, ip_address1, ip_address2, ip_address3, user1_id, user2_id, customer_id, version, featurea, featureb, featurec) VALUES
-  (4, '2023-05-01', '2023-08-31', '192.168.5.1', '192.168.5.2', '192.168.5.3', 8, 9, 2, 1.4, 1, 1, 0),
-  (5, '2023-06-01', '2023-07-31', '192.168.6.1', '192.168.6.2', '192.168.6.3', 10, 11, 2, 1.5, 0, 1, 1);
+  (4, '2023-05-01', '2023-08-31', '192.168.5.1', '192.168.5.2', '192.168.5.3', 8, 9, 2, 1.4, 1, 1, 2),
+  (5, '2023-06-01', '2023-07-31', '192.168.6.1', '192.168.6.2', '192.168.6.3', 10, 11, 2, 1.5, 2, 1, 1);
 
 -- Insert instances associated with Customer1
 INSERT INTO instance (id, name, ip_address, type, status, contract_id) VALUES

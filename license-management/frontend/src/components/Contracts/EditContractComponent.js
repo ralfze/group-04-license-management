@@ -1,21 +1,21 @@
-// frontend/src/components/Customers/EditContractComponent.js
+// frontend/src/components/Contracts/EditContractComponent.js
 import React, { useEffect, useState } from 'react';
 import { Box, Button, HStack } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ContractForm from './ContractForm';
-import CustomerService from '../../services/CustomerService';
+import ContractService from '../../services/ContractService';
 
 const EditContractComponent = () => {
   const { contractId } = useParams();
   const [contract, setContract] = useState({});
   const navigate = useNavigate(); // Get the navigate function from the hook
-  // Now, you can use the customercustomerId in your component logic
-  //console.log('Customer contractId:', contractId);
+  // Now, you can use the ContractContractId in your component logic
+  //console.log('Contract contractId:', contractId);
 
   useEffect(() => {
     const loadContract = async () => {
       try {
-        const response = await CustomerService.getCustomerById(contractId);
+        const response = await ContractService.getContractById(contractId);
         setContract(response.data);
         //console.log(response.data);
       } catch (error) {
@@ -29,7 +29,7 @@ const EditContractComponent = () => {
 
   const handleSave = async () => {
     try {
-      await CustomerService.updateCustomer(contractId, contract);
+      await ContractService.updateContract(contractId, contract);
       navigate('/contracts');
     } catch (error) {
       console.error('Error updating contract:', error);
@@ -43,7 +43,7 @@ const EditContractComponent = () => {
   return (
       <Box>
         <ContractForm contract={contract} setContract={setContract} />
-        <HStack>
+        <HStack justify="center">
           <Button onClick={handleSave}>Save</Button>
           <Button onClick={handleAbort}>Abort</Button>
         </HStack>
