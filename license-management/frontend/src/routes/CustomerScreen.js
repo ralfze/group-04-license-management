@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ChakraProvider,
+  Box,
   Button,
   HStack,
   Input,
@@ -15,7 +15,7 @@ import CustomerListComponent from '../components/Customers/CustomerListComponent
 
 const CustomerScreen = () => {
   return (
-    <ChakraProvider>
+    <Box>
       <Flex as="div" p="1em" alignItems="center" direction="row">
         <Heading as="h1">Customers</Heading>
         <Spacer />
@@ -50,7 +50,7 @@ const CustomerScreen = () => {
         </Flex>
         <CustomerListComponent />
       </Flex>
-    </ChakraProvider>
+    </Box>
   );
 };
 

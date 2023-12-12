@@ -35,6 +35,17 @@ public class Contract {
     @ManyToOne
     private User user2;
 
+    @ManyToOne
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     private double version;
 
     public double getVersion() {

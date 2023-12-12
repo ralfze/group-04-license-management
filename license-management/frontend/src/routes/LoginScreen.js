@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChakraProvider, Box, Input, Button, Heading, VStack } from '@chakra-ui/react';
+import { Box, Input, Button, Heading, VStack } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
@@ -17,7 +17,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <ChakraProvider>
+    <Box>
       <Box
         display="flex"
         justifyContent="center"
@@ -63,7 +63,7 @@ const LoginScreen = () => {
           </Box>
         </VStack>
       </Box>
-    </ChakraProvider>
+    </Box>
   );
 };
 

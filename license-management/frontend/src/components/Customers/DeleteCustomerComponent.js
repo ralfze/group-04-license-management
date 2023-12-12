@@ -1,6 +1,6 @@
 // frontend/src/components/Customers/EditCustomerComponent.js
 import React, { useEffect, useState } from 'react';
-import { Box, Button, ChakraProvider, HStack, VStack, Heading, Input, FormControl, FormLabel } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack, Heading, Input, FormControl, FormLabel } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CustomerService from '../../services/CustomerService';
 
@@ -41,7 +41,6 @@ const DeleteCustomerComponent = () => {
     }
 
     return (
-        <ChakraProvider>
             <Box>
                 <VStack>
                     <Heading>Do you want to delete the Customer?</Heading>
@@ -109,7 +108,6 @@ const DeleteCustomerComponent = () => {
                     <Button onClick={handleAbort}>Abort</Button>
                 </HStack>
             </Box>
-        </ChakraProvider>
     );
 };
 

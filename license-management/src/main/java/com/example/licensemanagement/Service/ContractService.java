@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.licensemanagement.Entity.Contract;
 import com.example.licensemanagement.Repo.ContractRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,12 @@ public class ContractService {
     private ContractRepository contractRepository;
 
     public List<Contract> getAllContracts() {
-        return contractRepository.findAll();
+        List<Contract> contracts = contractRepository.findAll();
+
+        // Sort the contracts based on their IDs
+        contracts.sort(Comparator.comparing(Contract::getId));
+
+        return contracts;
     }
 
     public Optional<Contract> getContractById(Long id) {
@@ -29,6 +35,7 @@ public class ContractService {
 
     public Optional<Contract> updateContract(Long id, Contract updatedContract) {
         return contractRepository.findById(id).map(existingContract -> {
+            existingContract.setCustomer(updatedContract.getCustomer());
             existingContract.setStartDate(updatedContract.getStartDate());
             existingContract.setEndDate(updatedContract.getEndDate());
             existingContract.setIpAddress1(updatedContract.getIpAddress1());
