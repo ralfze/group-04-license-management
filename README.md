@@ -15,8 +15,15 @@
 - Use ReactJS as client side technology
 
 ## OpenApi Notes
-http://localhost:8081/swagger-ui.html
+http://localhost:8081/swagger-ui.html \
 http://localhost:8081/api-docs
+
+## App Notes
+Backend can be run in the folder /licensemanagement with the command \
+./gradlew bootRun
+
+Frontend can be run in the folder /licensemanagement/frontend with the command \
+npm start
 
 ## PostgreSql Notes
 Database-name: licenseman

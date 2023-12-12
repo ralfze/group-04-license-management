@@ -68,27 +68,32 @@ const ContractForm = ({ contract, setContract }) => {
           </HStack>
           {/* Responsible Users */}
           <HStack>
-            <FormControl>
-              <FormLabel>Responsible 01</FormLabel>
-              <Input
-                type="text"
-                name="user1"
-                placeholder="User1"
-                value={contract.user1 || ''}
-                onChange={handleChange}
-              />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel>Responsible 02</FormLabel>
-              <Input
-                type="text"
-                name="user2"
-                placeholder="User2"
-                value={contract.user2 || ''}
-                onChange={handleChange}
-              />
-            </FormControl>
+            {contract.user1 && (
+              <FormControl>
+                <FormLabel>Responsible 01</FormLabel>
+                <Input
+                  type="text"
+                  name="user1"
+                  placeholder="User1"
+                  value={contract.user1.firstName || ''}
+                  onChange={handleChange}
+                />
+              </FormControl>
+            )
+            }
+            {contract.user2 && (
+              <FormControl>
+                <FormLabel>Responsible 02</FormLabel>
+                <Input
+                  type="text"
+                  name="user2"
+                  placeholder="User2"
+                  value={contract.user2.firstName || ''}
+                  onChange={handleChange}
+                />
+              </FormControl>
+            )
+            }
           </HStack>
           {/* ipAddress1 */}
           <HStack>
