@@ -10,6 +10,8 @@ import UserScreen from './routes/UserScreen';
 import EditCustomerComponent from './components/Customers/EditCustomerComponent';
 import AddCustomerComponent from './components/Customers/AddCustomerComponent';
 import DeleteCustomerComponent from './components/Customers/DeleteCustomerComponent';
+import EditContractComponent from './components/Contracts/EditContractComponent';
+import DeleteContractComponent from './components/Contracts/DeleteContractComponent';
 
 function App() {
   // Router for Website Routes
@@ -26,6 +28,8 @@ function App() {
         { path: '/customers/add', element: <AddCustomerComponent /> },
         { path: '/customers/delete/:customerId', element: <DeleteCustomerComponent /> },
         { path: '/contracts', element: <ContractScreen /> },
+        { path: '/contracts/edit/:contractId', element: <EditContractComponent /> },
+        { path: '/contracts/delete/:contractId', element: <DeleteContractComponent /> },
         { path: '/instances', element: <InstanceScreen /> },
         { path: '/users', element: <UserScreen /> },
       ],

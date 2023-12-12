@@ -29,6 +29,7 @@ public class ContractService {
 
     public Optional<Contract> updateContract(Long id, Contract updatedContract) {
         return contractRepository.findById(id).map(existingContract -> {
+            existingContract.setCustomer(updatedContract.getCustomer());
             existingContract.setStartDate(updatedContract.getStartDate());
             existingContract.setEndDate(updatedContract.getEndDate());
             existingContract.setIpAddress1(updatedContract.getIpAddress1());

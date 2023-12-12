@@ -8,10 +8,10 @@ import {
   Heading,
   Flex,
   Spacer,
-  VStack,
 } from '@chakra-ui/react';
 import { IconLogout } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import ContractListComponent from '../components/Contracts/ContractListComponent'
 
 const ContractScreen = () => {
   return (
@@ -56,136 +56,9 @@ const ContractScreen = () => {
           <Button as={Link} to="/users" variant="solid" size="md">
             Users
           </Button>
+          
         </Flex>
-
-        <Flex
-          as="div"
-          direction="column"
-          paddingTop="0em"
-          paddingLeft="1em"
-          gap="0.5em"
-          flex="9"
-        >
-          <HStack flex="1" alignItems="start">
-            <Heading as="h2" size="md" flex="0" align="flex-start">
-              Customer
-            </Heading>
-
-            <VStack flex="1">
-              <HStack flex="1">
-                <Heading as="h2" size="md" flex="1">
-                  Contract start
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract end
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Version
-                </Heading>
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/contracts"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Details
-                </Button>
-              </HStack>
-              <HStack flex="1">
-                <Heading as="h2" size="md" flex="1">
-                  Contract start
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract end
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Version
-                </Heading>
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/contracts"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Details
-                </Button>
-              </HStack>
-              <HStack flex="1">
-                <Heading as="h2" size="md" flex="1">
-                  Contract start
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract end
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Version
-                </Heading>
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/contracts"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Details
-                </Button>
-              </HStack>
-            </VStack>
-          </HStack>
-        </Flex>
+        <ContractListComponent />
       </Flex>
     </Box>
   );
