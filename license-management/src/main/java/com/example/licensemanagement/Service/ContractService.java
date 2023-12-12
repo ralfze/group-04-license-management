@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.licensemanagement.Entity.Contract;
+import com.example.licensemanagement.Entity.Instance;
 import com.example.licensemanagement.Repo.ContractRepository;
-
+import com.example.licensemanagement.Repo.InstanceRepository;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,9 @@ public class ContractService {
 
     @Autowired
     private ContractRepository contractRepository;
+
+    @Autowired
+    private InstanceRepository instanceRepository;
 
     public List<Contract> getAllContracts() {
         List<Contract> contracts = contractRepository.findAll();
@@ -53,6 +57,15 @@ public class ContractService {
     }
 
     public void deleteContract(Long id) {
+        // Get the contract
+        Optional<Contract> contract = contractRepository.findById(id);
+        // Find all instance referenced by the contract
+        List<Instance> instances = instanceRepository.findByContract(contract);
+        // Delete all referenced instances
+        for (Instance i : instances) {
+            instanceRepository.delete(i);
+        }
+        // Delete the contract at last
         contractRepository.deleteById(id);
     }
 

@@ -1,8 +1,9 @@
 // frontend/src/components/Customers/EditCustomerComponent.js
 import React, { useEffect, useState } from 'react';
-import { Box, Button, HStack, VStack, Heading, Input, FormControl, FormLabel } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack, Heading } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ContractService from '../../services/ContractService';
+import ContractForm from './ContractForm';
 
 const DeleteContractComponent = () => {
     const { contractId } = useParams();
@@ -14,9 +15,9 @@ const DeleteContractComponent = () => {
     useEffect(() => {
         const loadCustomer = async () => {
             try {
-                const response = await ContractService.getCustomerById(contractId);
+                const response = await ContractService.getContractById(contractId);
                 setContract(response.data);
-                console.log(response.data);
+                //console.log(response.data);
             } catch (error) {
                 console.error('Error loading contract:', error);
             }
@@ -29,7 +30,7 @@ const DeleteContractComponent = () => {
     const handleDelete = async () => {
         try {
             // Id of the contract object 
-            await ContractService.deleteCustomer(contractId);
+            await ContractService.deleteContract(contractId);
             navigate('/contracts');
         } catch (error) {
             console.error('Error updating contract:', error);
@@ -37,33 +38,21 @@ const DeleteContractComponent = () => {
     };
 
     const handleAbort = () => {
-        navigate('/customers');
+        navigate('/contracts');
     }
 
     return (
-            <Box>
-                <VStack>
-                    <Heading>Do you want to delete the Customer?</Heading>
-                    {contract.contract && (
-                        <>
-                            <FormControl>
-                                <FormLabel>Name</FormLabel>
-                                <Input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Customer Name"
-                                    value={contract.contract.name || ''}
-                                    isDisabled={true}
-                                />
-                            </FormControl>
-                        </>
-                    )}
-                </VStack>
+        <Box>
+            <VStack>
+                <Heading>Do you want to delete the Customer?</Heading>
+                <ContractForm contract={contract} setContract={setContract} readOnly={true} />
+
                 <HStack>
                     <Button onClick={handleDelete}>Delete</Button>
                     <Button onClick={handleAbort}>Abort</Button>
                 </HStack>
-            </Box>
+            </VStack>
+        </Box>
     );
 };
 

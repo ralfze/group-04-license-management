@@ -18,7 +18,7 @@ const ContractListComponent = ({ navigate }) => {
     try {
       const response = await ContractService.getAllContracts();
       setContracts(response.data);
-      //console.log(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error loading contracts:', error);
     }

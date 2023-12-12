@@ -1,9 +1,11 @@
 import React from 'react';
-import { VStack, HStack, Input, FormControl, FormLabel, Textarea } from '@chakra-ui/react';
+import { VStack, HStack, Input, FormControl, FormLabel, Textarea, Select } from '@chakra-ui/react';
 
-const ContractForm = ({ contract, setContract }) => {
+const ContractForm = ({ contract, setContract, readOnly}) => {
   const handleChange = (e) => {
-    setContract((contract) => ({
+    //console.log(e);
+    setContract((contract) => (
+      {
       ...contract,
       [e.target.name]: e.target.value,
       user1: {
@@ -31,6 +33,8 @@ const ContractForm = ({ contract, setContract }) => {
                 placeholder="Startdate"
                 value={contract.startDate || ''}
                 onChange={handleChange}
+                readOnly={readOnly}
+
               />
             </FormControl>
 
@@ -42,6 +46,8 @@ const ContractForm = ({ contract, setContract }) => {
                 placeholder="Enddate"
                 value={contract.endDate || ''}
                 onChange={handleChange}
+                
+
               />
             </FormControl>
           </HStack>
@@ -55,6 +61,7 @@ const ContractForm = ({ contract, setContract }) => {
                 placeholder="Version"
                 value={contract.version || ''}
                 onChange={handleChange}
+                readOnly={readOnly}
               />
             </FormControl>
             <FormControl isDisabled="true" visibility="hidden">
@@ -63,6 +70,7 @@ const ContractForm = ({ contract, setContract }) => {
                 name=""
                 placeholder=""
                 value={''}
+                readOnly={readOnly}
               />
             </FormControl>
           </HStack>
@@ -71,26 +79,34 @@ const ContractForm = ({ contract, setContract }) => {
             {contract.user1 && (
               <FormControl>
                 <FormLabel>Responsible 01</FormLabel>
-                <Input
-                  type="text"
+                <Select
                   name="user1"
-                  placeholder="User1"
-                  value={contract.user1.firstName || ''}
+                  value={contract.user1 || ''}
                   onChange={handleChange}
-                />
+                  p="0"
+                  readOnly={readOnly}
+                >
+                  <option value={contract.user1 || ''}>{contract.user1.firstName}</option>
+                  <option value="option2" >Option 2</option>
+                  <option value="option3" >Option 3</option>
+                </Select>
               </FormControl>
             )
             }
             {contract.user2 && (
               <FormControl>
                 <FormLabel>Responsible 02</FormLabel>
-                <Input
-                  type="text"
+                <Select
                   name="user2"
-                  placeholder="User2"
-                  value={contract.user2.firstName || ''}
+                  value={contract.user2 || ''}
                   onChange={handleChange}
-                />
+                  p="0"
+                  readOnly={readOnly}
+                >
+                   <option value={contract.user2 || ''}>{contract.user2.firstName}</option>
+                  <option value="option2" >Option 2</option>
+                  <option value="option3" >Option 3</option>
+                </Select>
               </FormControl>
             )
             }
@@ -101,10 +117,11 @@ const ContractForm = ({ contract, setContract }) => {
               <FormLabel>Ip number</FormLabel>
               <Input
                 type="text"
-                name="ipAdress1"
+                name="ipAddress1"
                 placeholder="192.168.x.x"
                 value={contract.ipAddress1 || ''}
                 onChange={handleChange}
+                readOnly={readOnly}
               />
             </FormControl>
 
@@ -116,6 +133,7 @@ const ContractForm = ({ contract, setContract }) => {
                 placeholder="feature A"
                 value={contract.featureA || ''}
                 onChange={handleChange}
+                readOnly={readOnly}
               />
             </FormControl>
           </HStack>
@@ -126,10 +144,11 @@ const ContractForm = ({ contract, setContract }) => {
               <FormLabel>Ip number</FormLabel>
               <Input
                 type="text"
-                name="ipAdress2"
+                name="ipAddress2"
                 placeholder="192.168.x.x"
                 value={contract.ipAddress2 || ''}
                 onChange={handleChange}
+                readOnly={readOnly}
               />
             </FormControl>
 
@@ -141,6 +160,7 @@ const ContractForm = ({ contract, setContract }) => {
                 placeholder="feature B"
                 value={contract.featureB || ''}
                 onChange={handleChange}
+                readOnly={readOnly}
               />
             </FormControl>
           </HStack>
@@ -151,10 +171,11 @@ const ContractForm = ({ contract, setContract }) => {
               <FormLabel>Ip number</FormLabel>
               <Input
                 type="text"
-                name="ipAdress3"
+                name="ipAddress3"
                 placeholder="192.168.x.x"
                 value={contract.ipAddress3 || ''}
                 onChange={handleChange}
+                readOnly={readOnly}
               />
             </FormControl>
 
@@ -166,17 +187,20 @@ const ContractForm = ({ contract, setContract }) => {
                 placeholder="feature C"
                 value={contract.featureC || ''}
                 onChange={handleChange}
+                readOnly={readOnly}
               />
             </FormControl>
           </HStack>
           {/* License Text Area*/}
           <HStack>
             <Textarea
-              value={contract.license}
+              value={contract.licenseKey || ''}
+              name="licenseKey"
               onChange={handleChange}
               placeholder='Here will be the license key.'
               size='sm'
               resize="vertical"
+              readOnly={readOnly}
             />
           </HStack>
         </>
