@@ -1,22 +1,22 @@
 import React from 'react';
 import { VStack, HStack, Input, FormControl, FormLabel, Textarea, Select } from '@chakra-ui/react';
 
-const ContractForm = ({ contract, setContract, readOnly}) => {
+const ContractForm = ({ contract, setContract, readOnly }) => {
   const handleChange = (e) => {
     //console.log(e);
     setContract((contract) => (
       {
-      ...contract,
-      [e.target.name]: e.target.value,
-      user1: {
-        ...(contract.user1 || {}), // Initialize if undefined
+        ...contract,
         [e.target.name]: e.target.value,
-      },
-      user2: {
-        ...(contract.user2 || {}), // Initialize if undefined
-        [e.target.name]: e.target.value,
-      },
-    }));
+        user1: {
+          ...(contract.user1 || {}), // Initialize if undefined
+          [e.target.name]: e.target.value,
+        },
+        user2: {
+          ...(contract.user2 || {}), // Initialize if undefined
+          [e.target.name]: e.target.value,
+        },
+      }));
   };
 
   return (
@@ -46,7 +46,7 @@ const ContractForm = ({ contract, setContract, readOnly}) => {
                 placeholder="Enddate"
                 value={contract.endDate || ''}
                 onChange={handleChange}
-                
+
 
               />
             </FormControl>
@@ -76,9 +76,9 @@ const ContractForm = ({ contract, setContract, readOnly}) => {
           </HStack>
           {/* Responsible Users */}
           <HStack>
-            {contract.user1 && (
-              <FormControl>
-                <FormLabel>Responsible 01</FormLabel>
+            <FormControl>
+              <FormLabel>Responsible 01</FormLabel>
+              {contract.user1 &&
                 <Select
                   name="user1"
                   value={contract.user1 || ''}
@@ -90,12 +90,12 @@ const ContractForm = ({ contract, setContract, readOnly}) => {
                   <option value="option2" >Option 2</option>
                   <option value="option3" >Option 3</option>
                 </Select>
-              </FormControl>
-            )
-            }
-            {contract.user2 && (
-              <FormControl>
-                <FormLabel>Responsible 02</FormLabel>
+              }
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Responsible 02</FormLabel>
+              {contract.user1 &&
                 <Select
                   name="user2"
                   value={contract.user2 || ''}
@@ -103,13 +103,13 @@ const ContractForm = ({ contract, setContract, readOnly}) => {
                   p="0"
                   readOnly={readOnly}
                 >
-                   <option value={contract.user2 || ''}>{contract.user2.firstName}</option>
+                  <option value={contract.user2 || ''}>{contract.user2.firstName}</option>
                   <option value="option2" >Option 2</option>
                   <option value="option3" >Option 3</option>
                 </Select>
-              </FormControl>
-            )
-            }
+              }
+            </FormControl>
+
           </HStack>
           {/* ipAddress1 */}
           <HStack>

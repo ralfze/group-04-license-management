@@ -1,5 +1,5 @@
 // frontend/src/components/Contracts/EditContractComponent.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -13,13 +13,31 @@ import {
 import { useNavigate } from 'react-router-dom';
 import ContractForm from './ContractForm';
 import ContractService from '../../services/ContractService';
+import CustomerService from '../../services/CustomerService';
 
 const AddContractComponent = () => {
-  const [contract, setContract] = useState({ contract: {} });
+  const [contract, setContract] = useState({ customer: {} });
+  const [customers, setCustomers] = useState([]);
+  const [selectOption, setSelectOption] = useState("");
   const navigate = useNavigate(); // Get the navigate function from the hook
   // Now, you can use the ContractContractId in your component logic
   //console.log('Contract contractId:', contractId);
 
+  useEffect(() => {
+    loadCustomers();
+  }
+    , [navigate]);
+
+
+  const loadCustomers = async () => {
+    try {
+      const response = await CustomerService.getAllCustomers();
+      setCustomers(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error loading customers:', error);
+    }
+  };
 
   const handleSave = async () => {
     try {
@@ -32,18 +50,23 @@ const AddContractComponent = () => {
 
   const handleAbort = () => {
     navigate('/contracts');
-  }
+  };
 
   const handleChange = (e) => {
-    const handleChange = (e) => {
-      //console.log(e);
-      setContract((contract) => (
-        {
-          ...contract,
-          [e.target.name]: e.target.value,
-        }));
-    };
-  }
+    const selectedCustomerId = e.target.value;
+    const selectedCustomer = customers.find((c) => String(c.customer.id) === String(selectedCustomerId)) || {};
+    setContract((prevContract) => ({
+      ...prevContract,
+      customer: selectedCustomer,
+    }));
+
+    // set the chosen custoemr
+    setSelectOption(selectedCustomerId);
+    console.log(contract);
+  };
+  
+
+
 
   return (
     <Box>
@@ -53,13 +76,20 @@ const AddContractComponent = () => {
             <FormLabel>Customer</FormLabel>
             <Select
               name="customer"
-              value={contract.customer || ''}
+              value={ selectOption||''}
               onChange={handleChange}
               p="0"
             >
-              <option value={contract.customer || ''}>{contract.customer}</option>
-              <option value="option2" >Option 2</option>
-              <option value="option3" >Option 3</option>
+              {customers &&
+                customers.map((c) => (
+                  (
+                    c.customer && (
+                      <option key={c.customer.id} value={c.customer.id}>
+                        {c.customer.name}
+                      </option>)
+                  )
+                ))
+              }
             </Select>
           </FormControl>
           <FormControl isDisabled="true" visibility="hidden">
@@ -71,7 +101,7 @@ const AddContractComponent = () => {
             />
           </FormControl>
         </HStack>
-        <ContractForm contract={contract} setContract={setContract} />
+        <ContractForm contract={contract} setContract={setContract} readOnly={false}/>
         <HStack justify="center">
           <Button onClick={handleSave}>Create Contract</Button>
           <Button onClick={handleAbort}>Abort</Button>
