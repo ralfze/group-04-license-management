@@ -1,6 +1,5 @@
 package com.example.licensemanagement.Controller;
 
-
 import com.example.licensemanagement.dto.LoginRequestDTO;
 import com.example.licensemanagement.Entity.User;
 import com.example.licensemanagement.Service.UserService;

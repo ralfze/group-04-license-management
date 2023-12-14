@@ -3,7 +3,6 @@ package com.example.licensemanagement.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.licensemanagement.Entity.Contract;
 import com.example.licensemanagement.Entity.User;
 import com.example.licensemanagement.Repo.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
