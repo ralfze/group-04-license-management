@@ -4,6 +4,7 @@ import { Button, HStack, Heading, Flex } from '@chakra-ui/react';
 import { Link } from 'react-router-dom'; // Import Link and useNavigate
 import UserService from '../../services/UserService';
 
+
 const UserListComponent = ({ navigate }) => {
   const [users, setUsers] = useState([]);
 

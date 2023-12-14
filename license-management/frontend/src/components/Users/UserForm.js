@@ -9,7 +9,7 @@ import {
   Select
 } from '@chakra-ui/react';
 
-const UserForm = ({ user, setUser, readOnly }) => {
+const UserForm = ({ user, setUser, customers, readOnly }) => {
   const handleChange = (e) => {
     //console.log(e);
     //console.log(`name: ${e.target.name} value: ${e.target.value}`);
@@ -17,15 +17,25 @@ const UserForm = ({ user, setUser, readOnly }) => {
       {
         ...user,
         [e.target.name]: e.target.value,
-        customer: {
-          ...(user.customer || {}), // Initialize if undefined
-          [e.target.name]: e.target.value,
-        },
       }));
-      console.log(user);
+    console.log(user);
   };
 
-  const handleAdmin = (e) =>{
+  const handleCustomer = (e) => {
+    //console.log(customers.find((c) => String(c.customer.id) === String(e.target.value)));
+    //console.log(selectedCustomer)
+    //console.log(e.target.value);
+
+    setUser((user) => (
+      {
+        ...user,
+        customer: (customers.find((c) => String(c.customer.id) === String(e.target.value))).customer,
+      }
+    ));
+    console.log(user);
+  }
+
+  const handleAdmin = (e) => {
     //console.log(`name: ${e.target.name} value: ${e.target.value}`);
     setUser((user) => (
       {
@@ -42,17 +52,25 @@ const UserForm = ({ user, setUser, readOnly }) => {
           <HStack>
             <FormControl>
               <FormLabel>Customer</FormLabel>
-              {user.customer &&
-                <Input
-                  type="text"
-                  name="customer"
-                  placeholder="Customer"
-                  value={user.customer.name || ''}
-                  onChange={handleChange}
-                  readOnly={readOnly}
-
-                />
-              }
+              {user.customer && (
+              <Select
+                name="customer"
+                value={user.customer.id || ''}
+                onChange={handleCustomer}
+                p="0"
+              >
+                {customers &&
+                  customers.map((c) => (
+                    (
+                      c.customer && (
+                        <option key={c.customer.id} value={c.customer.id}>
+                          {c.customer.name}
+                        </option>)
+                    )
+                  ))
+                }
+              </Select>
+              )}
             </FormControl>
 
             <FormControl isDisabled="true" visibility="hidden">
@@ -122,7 +140,7 @@ const UserForm = ({ user, setUser, readOnly }) => {
           <HStack>
             <FormControl>
               <FormLabel>is Administrator</FormLabel>
-          <Checkbox isDisabled={readOnly} isChecked={user.admin} onChange={handleAdmin} name="admin" />
+              <Checkbox isDisabled={readOnly} isChecked={user.admin} onChange={handleAdmin} name="admin" />
             </FormControl>
 
             <FormControl>

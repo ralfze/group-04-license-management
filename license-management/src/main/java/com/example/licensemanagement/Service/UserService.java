@@ -42,6 +42,7 @@ public class UserService {
 
     public Optional<User> updateUser(Long id, User updatedUser) {
         return userRepository.findById(id).map(existingUser -> {
+            existingUser.setCustomer(updatedUser.getCustomer());
             existingUser.setFirstName(updatedUser.getFirstName());
             existingUser.setLastName(updatedUser.getLastName());
             existingUser.setLoginName(updatedUser.getLoginName());
