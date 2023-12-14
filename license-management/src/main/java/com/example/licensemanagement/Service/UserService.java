@@ -3,10 +3,12 @@ package com.example.licensemanagement.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.licensemanagement.Entity.Contract;
 import com.example.licensemanagement.Entity.User;
 import com.example.licensemanagement.Repo.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +21,13 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        List<User> users = userRepository.findAll();
+
+        // Sort the contracts based on their IDs
+        users.sort(Comparator.comparing(User::getId));
+
+        return users;
     }
 
     public Optional<User> getUserById(Long id) {
@@ -57,4 +63,3 @@ public class UserService {
         return null;
     }
 }
-

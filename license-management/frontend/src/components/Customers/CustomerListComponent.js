@@ -33,44 +33,47 @@ const CustomerListComponent = ({ navigate }) => {
       gap="0.5em"
       flex="9"
     >
-      {customers.map((customer) => (
-        <HStack flex="1" key={customer.customer.id}>
-          <Heading as="h2" size="md" flex="1" key={`name-${customer.customer.id}`}>
-            {customer.customer.name}
-          </Heading>
+      {customers.length > 0 ? (
+        customers.map((customer) => (
+          <HStack flex="1" key={customer.customer.id}>
+            <Heading as="h2" size="md" flex="1" key={`name-${customer.customer.id}`}>
+              {customer.customer.name}
+            </Heading>
 
-          <Heading as="h2" size="md" flex="1" key={`street-${customer.customer.id}`}>
-            {customer.customer.street}
-          </Heading>
+            <Heading as="h2" size="md" flex="1" key={`street-${customer.customer.id}`}>
+              {customer.customer.street}
+            </Heading>
 
-          <Heading as="h2" size="md" flex="1" key={`town-${customer.customer.id}`}>
-            {customer.customer.town}
-          </Heading>
+            <Heading as="h2" size="md" flex="1" key={`town-${customer.customer.id}`}>
+              {customer.customer.town}
+            </Heading>
 
-          <Button as={Link} to={`edit/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`edit-${customer.customer.id}`}>
-            Edit
-          </Button>
+            <Button as={Link} to={`edit/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`edit-${customer.customer.id}`}>
+              Edit
+            </Button>
 
-          <Button as={Link} to={`delete/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`delete-${customer.customer.id}`}>
-            Delete
-          </Button>
+            <Button as={Link} to={`delete/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`delete-${customer.customer.id}`}>
+              Delete
+            </Button>
 
-          <Button
-            as={Link}
-            to={`/contracts/${customer.customer.id}`}
-            variant="solid"
-            size="md"
-            flex="1"
-            key={`contracts-${customer.customer.id}`}
-          >
-            Contracts
-          </Button>
+            <Button
+              as={Link}
+              to={`/contracts/${customer.customer.id}`}
+              variant="solid"
+              size="md"
+              flex="1"
+              key={`contracts-${customer.customer.id}`}
+            >
+              Contracts
+            </Button>
 
-          <Button as={Link} to={`/customers/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`users-${customer.customer.id}`}>
-            Users
-          </Button>
-        </HStack>
-      ))}
+            <Button as={Link} to={`/customers/${customer.customer.id}`} variant="solid" size="md" flex="1" key={`users-${customer.customer.id}`}>
+              Users
+            </Button>
+          </HStack>
+        ))) : (
+        <p>No customers available</p>
+      )}
 
 
 
