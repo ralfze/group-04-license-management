@@ -1,7 +1,10 @@
 package com.example.licensemanagement.Entity;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Contract {
@@ -34,6 +37,17 @@ public class Contract {
 
     @ManyToOne
     private User user2;
+
+    @ManyToOne
+    private Customer customer;
+ 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     private double version;
 
@@ -149,4 +163,3 @@ public class Contract {
 
     // getters and setters
 }
-

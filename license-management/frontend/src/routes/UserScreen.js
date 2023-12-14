@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ChakraProvider,
+  Box,
   Button,
   HStack,
   Input,
@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 const UserScreen = () => {
   return (
-    <ChakraProvider>
+    <Box>
       <Flex as="div" p="1em" alignItems="center" direction="row">
         <Heading as="h1">Users</Heading>
         <Spacer />
@@ -137,7 +137,7 @@ const UserScreen = () => {
           </HStack>
         </Flex>
       </Flex>
-    </ChakraProvider>
+    </Box>
   );
 };
 

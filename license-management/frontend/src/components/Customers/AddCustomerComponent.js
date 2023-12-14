@@ -1,6 +1,6 @@
 // frontend/src/components/Customers/AddCustomerComponent.js
 import React, { useState } from 'react';
-import { Box, Button, HStack, ChakraProvider } from '@chakra-ui/react';
+import { Box, Button, HStack } from '@chakra-ui/react';
 import CustomerAddForm from './CustomerAddForm';
 import CustomerService from '../../services/CustomerService';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
@@ -24,7 +24,6 @@ const AddCustomerComponent = () => {
   }
 
   return (
-    <ChakraProvider>
       <Box>
         <CustomerAddForm customer={customer} setCustomer={setCustomer} />
         <HStack>
@@ -32,7 +31,6 @@ const AddCustomerComponent = () => {
           <Button onClick={handleAbort}>Abort</Button>
         </HStack>
       </Box>
-    </ChakraProvider>
   );
 };
 
