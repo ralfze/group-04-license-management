@@ -58,6 +58,7 @@ const UserForm = ({ user, setUser, customers, readOnly }) => {
                 value={user.customer.id || ''}
                 onChange={handleCustomer}
                 p="0"
+                isDisabled={readOnly}
               >
                 {customers &&
                   customers.map((c) => (

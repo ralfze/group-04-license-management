@@ -14,6 +14,7 @@ import EditContractComponent from './components/Contracts/EditContractComponent'
 import DeleteContractComponent from './components/Contracts/DeleteContractComponent';
 import AddContractComponent from './components/Contracts/AddContractForm';
 import EditUserComponent from './components/Users/EditUserComponent';
+import DeleteUserComponent from './components/Users/DeleteUserComponent';
 
 function App() {
   // Router for Website Routes
@@ -36,6 +37,7 @@ function App() {
         { path: '/instances', element: <InstanceScreen /> },
         { path: '/users', element: <UserScreen /> },
         { path: '/users/edit/:userId', element: <EditUserComponent /> },
+        { path: '/users/delete/:userId', element: <DeleteUserComponent /> },
       ],
     },
   ]);
