@@ -8,10 +8,10 @@ import {
   Heading,
   Flex,
   Spacer,
-  VStack,
 } from '@chakra-ui/react';
 import { IconLogout } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import UserListComponent from '../components/Users/UserListComponent';
 
 const UserScreen = () => {
   return (
@@ -21,7 +21,7 @@ const UserScreen = () => {
         <Spacer />
 
         <HStack spacing="1em">
-          <Button as={Link} to="/add" variant="solid" size="md">
+          <Button as={Link} to="add/" variant="solid" size="md">
             Add
           </Button>
           <Input placeholder="filter"></Input>
@@ -57,84 +57,7 @@ const UserScreen = () => {
           gap="0.5em"
           flex="9"
         >
-          <HStack flex="1" alignItems="start">
-            <Heading as="h2" size="md" flex="0" align="flex-start">
-              Customer
-            </Heading>
-
-            <VStack flex="1" alignItems="start">
-              <HStack flex="1" alignItems="start">
-                <Heading as="h2" size="md" flex="1" whiteSpace="nowrap">
-                  User 1
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  user1@custb.com
-                </Heading>
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1" >
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-              </HStack>
-
-              <HStack flex="1" alignItems="start">
-                <Heading as="h2" size="md" flex="1" whiteSpace="nowrap">
-                  User 2
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  user2@custb.com
-                </Heading>
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-              </HStack>
-              <HStack flex="1" alignItems="start">
-                <Heading as="h2" size="md" flex="1" whiteSpace="nowrap">
-                  User 3
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  user3@custb.com
-                </Heading>
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-              </HStack>
-            </VStack>
-          </HStack>
+          <UserListComponent />
         </Flex>
       </Flex>
     </Box>

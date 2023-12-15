@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.example.licensemanagement.Entity.Customer;
 import com.example.licensemanagement.Entity.User;
 
-
-
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
