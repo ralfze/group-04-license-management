@@ -9,7 +9,7 @@ import {
   Select
 } from '@chakra-ui/react';
 
-const UserForm = ({ user, setUser, customers, readOnly }) => {
+const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
   const handleChange = (e) => {
     //console.log(e);
     //console.log(`name: ${e.target.name} value: ${e.target.value}`);
@@ -32,7 +32,7 @@ const UserForm = ({ user, setUser, customers, readOnly }) => {
         customer: (customers.find((c) => String(c.customer.id) === String(e.target.value))).customer,
       }
     ));
-    console.log(user);
+    //console.log(user);
   }
 
   const handleAdmin = (e) => {
@@ -50,7 +50,7 @@ const UserForm = ({ user, setUser, customers, readOnly }) => {
         <>
           {/* Customer */}
           <HStack>
-            <FormControl>
+            <FormControl isRequired={customerRequired}>
               <FormLabel>Customer</FormLabel>
               {user.customer && (
               <Select
@@ -58,7 +58,7 @@ const UserForm = ({ user, setUser, customers, readOnly }) => {
                 value={user.customer.id || ''}
                 onChange={handleCustomer}
                 p="0"
-                isDisabled={readOnly}
+                isDisabled={readOnly}   
               >
                 {customers &&
                   customers.map((c) => (

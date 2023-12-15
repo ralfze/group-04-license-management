@@ -21,7 +21,7 @@ const UserScreen = () => {
         <Spacer />
 
         <HStack spacing="1em">
-          <Button as={Link} to="/add" variant="solid" size="md">
+          <Button as={Link} to="add/" variant="solid" size="md">
             Add
           </Button>
           <Input placeholder="filter"></Input>
