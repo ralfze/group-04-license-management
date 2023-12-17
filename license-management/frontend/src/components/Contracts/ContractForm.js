@@ -95,7 +95,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
 
             <FormControl>
               <FormLabel>Responsible 02</FormLabel>
-              {contract.user1 &&
+              {contract.user2 &&
                 <Select
                   name="user2"
                   value={contract.user2 || ''}
@@ -103,7 +103,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
                   p="0"
                   readOnly={readOnly}
                 >
-                  <option value={contract.user2 || ''}>{contract.user2.firstName}</option>
+                  <option value={contract.user2 ? contract.user2 : "No user selected" || ''}>{contract.user2 ? contract.user2 : "No user selected" }</option>
                   <option value="option2" >Option 2</option>
                   <option value="option3" >Option 3</option>
                 </Select>

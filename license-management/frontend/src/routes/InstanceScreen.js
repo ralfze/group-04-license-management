@@ -8,7 +8,6 @@ import {
   Heading,
   Flex,
   Spacer,
-  VStack,
 } from '@chakra-ui/react';
 import { IconLogout } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';

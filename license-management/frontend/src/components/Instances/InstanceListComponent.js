@@ -18,7 +18,7 @@ const InstanceListComponent = ({ navigate }) => {
     try {
       const response = await InstanceService.getAllInstances();
       setInstances(response.data);
-      //console.log(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error loading Instances:', error);
     }
@@ -53,15 +53,15 @@ const InstanceListComponent = ({ navigate }) => {
               {instance.contract.endDate}
             </Heading>)
             )
-            <Button as={Link} to={`edit/${instance.id}`} variant="solid" size="md" flex="1" key={`edit-${Instance.id}`}>
+            <Button as={Link} to={`edit/${instance.id}`} variant="solid" size="md" flex="1" key={`edit-${instance.id}`}>
               Edit
             </Button>
 
-            <Button as={Link} to={`delete/${instance.id}`} variant="solid" size="md" flex="1" key={`delete-${Instance.id}`}>
+            <Button as={Link} to={`delete/${instance.id}`} variant="solid" size="md" flex="1" key={`delete-${instance.id}`}>
               Delete
             </Button>
 
-            <Button as={Link} to={`details/${instance.id}`} variant="solid" size="md" flex="1" key={`details-${Instance.id}`}>
+            <Button as={Link} to={`details/${instance.id}`} variant="solid" size="md" flex="1" key={`details-${instance.id}`}>
               Details
             </Button>
           </HStack>

@@ -16,21 +16,20 @@ const EditUserComponent = () => {
   //console.log('User UserId:', UserId);
 
   useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const response = await UserService.getUserById(userId);
+        setUser(response.data);
+        //console.log(response.data);
+      } catch (error) {
+        console.error('Error loading User:', error);
+      }
+    };
+
     loadUser();
     loadCustomers();
 
   }, [userId, navigate]);
-
-
-  const loadUser = async () => {
-    try {
-      const response = await UserService.getUserById(userId);
-      setUser(response.data);
-      //console.log(response.data);
-    } catch (error) {
-      console.error('Error loading User:', error);
-    }
-  };
 
   const loadCustomers = async () => {
     try {

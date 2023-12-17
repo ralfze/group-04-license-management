@@ -19,7 +19,7 @@ const UserListComponent = ({ navigate }) => {
     try {
       const response = await UserService.getAllUsers();
       setUsers(response.data);
-      console.log(response.data);
+      //console.log(response.data);
       //console.log(users);
     } catch (error) {
       console.error('Error loading users:', error);
