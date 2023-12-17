@@ -20,6 +20,7 @@ import AddInstanceComponent from './components/Instances/AddInstanceComponent';
 import EditInstanceComponent from './components/Instances/EditInstanceComponent';
 import DeleteInstanceComponent from './components/Instances/DeleteInstanceComponent';
 import DetailsInstanceComponent from './components/Instances/DetailsInstanceComponent';
+import DetailsContractComponent from './components/Contracts/DetailsContractComponent';
 
 function App() {
   // Router for Website Routes
@@ -35,6 +36,7 @@ function App() {
         { path: '/contracts/add', element: <AddContractComponent /> },
         { path: '/contracts/edit/:contractId', element: <EditContractComponent /> },
         { path: '/contracts/delete/:contractId', element: <DeleteContractComponent /> },
+        { path: '/contracts/details/:contractId', element: <DetailsContractComponent /> },
         { path: '/customers', element: <CustomerScreen /> },
         { path: '/customers/edit/:customerId', element: <EditCustomerComponent /> },
         { path: '/customers/add', element: <AddCustomerComponent /> },

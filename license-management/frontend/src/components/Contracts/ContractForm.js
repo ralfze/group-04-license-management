@@ -47,7 +47,6 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
                 value={contract.startDate || ''}
                 onChange={handleChange}
                 readOnly={readOnly}
-
               />
             </FormControl>
 
@@ -59,8 +58,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
                 placeholder="Enddate"
                 value={contract.endDate || ''}
                 onChange={handleChange}
-
-
+                readOnly={readOnly}
               />
             </FormControl>
           </HStack>
