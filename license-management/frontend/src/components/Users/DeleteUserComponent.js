@@ -61,9 +61,9 @@ const DeleteUserComponent = () => {
                 <Heading>Delete User</Heading>
                 <UserForm user={user} setUser={setUser} customers={customers} readOnly={true} />
 
-                <HStack>
-                    <Button onClick={handleDelete}>Delete</Button>
-                    <Button onClick={handleAbort}>Cancel</Button>
+                <HStack gap="2em">
+                    <Button w="50%" onClick={handleDelete}>Delete</Button>
+                    <Button w="50%" onClick={handleAbort}>Cancel</Button>
                 </HStack>
             </VStack>
         </Box>

@@ -61,9 +61,9 @@ const EditUserComponent = () => {
           <Heading>Edit User</Heading>
         </HStack>
         <UserForm user={user} setUser={setUser} customers={customers} />
-        <HStack justify="center">
-          <Button onClick={handleSave}>Save</Button>
-          <Button onClick={handleCancel}>Cancel</Button>
+        <HStack gap="2em">
+          <Button w="50%" onClick={handleSave}>Save</Button>
+          <Button w="50%" onClick={handleCancel}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>
