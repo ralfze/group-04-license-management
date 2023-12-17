@@ -38,7 +38,7 @@ function App() {
         { path: '/customers/add', element: <AddCustomerComponent /> },
         { path: '/customers/delete/:customerId', element: <DeleteCustomerComponent /> },
         { path: '/instances', element: <InstanceScreen /> },
-        { path: '/instances/edit', element: <EditInstanceComponent /> },
+        { path: '/instances/edit/:instanceId', element: <EditInstanceComponent /> },
         { path: '/instances/add', element: <AddInstanceComponent /> },
         { path: '/users', element: <UserScreen /> },
         { path: '/users/edit/:userId', element: <EditUserComponent /> },

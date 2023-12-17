@@ -5,15 +5,14 @@ import {
   Input,
   FormControl,
   FormLabel,
-  Checkbox,
   Select
 } from '@chakra-ui/react';
 
-const InstanceForm = ({ instance, setInstances, contracts, instanceRequired, readOnly }) => {
+const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, readOnly }) => {
   const handleChange = (e) => {
     //console.log(e);
     //console.log(`name: ${e.target.name} value: ${e.target.value}`);
-    setInstances((instance) => (
+    setInstance((instance) => (
       {
         ...instance,
         [e.target.name]: e.target.value,
@@ -21,142 +20,152 @@ const InstanceForm = ({ instance, setInstances, contracts, instanceRequired, rea
     console.log(instance);
   };
 
-  const handleContracts= (e) => {
+  const handleContract = (e) => {
     //console.log(contractss.find((c) => String(c.contracts.id) === String(e.target.value)));
     //console.log(selectedcontracts)
     //console.log(e.target.value);
 
-    setInstances((instance) => (
+    setInstance((instance) => (
       {
         ...instance,
-        contracts: (contracts.find((c) => String(c.contracts.id) === String(e.target.value))).contracts,
+        contract: (contracts.find((c) => String(c.id) === String(e.target.value))),
       }
     ));
     //console.log(instance);
   }
 
-  const handleAdmin = (e) => {
+  const handleStatus = (e) => {
     //console.log(`name: ${e.target.name} value: ${e.target.value}`);
-    setInstances((instance) => (
+    console.log(e.target.value);
+    setInstance((instance) => (
       {
         ...instance,
-        admin: !instance.admin,
+        status: e.target.value,
       }));
   }
 
   return (
-    <VStack>
-      {instance && (
-        <>
-          {/* contracts */}
-          <HStack>
-            <FormControl isRequired={instanceRequired}>
-              <FormLabel>contracts</FormLabel>
-              {instance.contracts && (
-              <Select
-                name="contracts"
-                value={instance.contracts.id || ''}
-                onChange={handleContracts}
-                p="0"
-                isDisabled={readOnly}   
-              >
-                {contracts &&
-                  contracts.map((c) => (
-                    (
-                      c.contracts && (
-                        <option key={c.contracts.id} value={c.contracts.id}>
-                          {c.contracts.name}
-                        </option>)
-                    )
-                  ))
-                }
-              </Select>
-              )}
-            </FormControl>
+    <VStack flexDirection="column" flex="1">
 
-            <FormControl isDisabled="true" visibility="hidden">
-              <Input
-                type="text"
-                name=""
-                placeholder=""
-                value={''}
-                readOnly={readOnly}
-              />
-            </FormControl>
-          </HStack>
-          {/* name & lastName*/}
-          <HStack alignContent="left" alignItems="left" justifyContent="left" >
-            <FormControl>
-              <FormLabel>First name</FormLabel>
-              <Input
-                type="text"
-                name="name"
-                placeholder="Instance name"
-                value={instance.name || ''}
-                onChange={handleChange}
-                readOnly={readOnly}
-              />
-            </FormControl>
-            <FormControl isDisabled="true" visibility="hidden">
-              <Input
-                type="text"
-                name=""
-                placeholder=""
-                value={''}
-                readOnly={readOnly}
-              />
-            </FormControl>
-          </HStack>
-          {/* email & phone */}
-          <HStack>
-            <FormControl>
-              <FormLabel>Email</FormLabel>
-              <Input
-                type="text"
-                name="email"
-                placeholder="Email"
-                value={instance.email || ''}
-                onChange={handleChange}
-                readOnly={readOnly}
-              />
+      (instance && 
+      {/* contract */}
+      <HStack w="100%">
+        <FormControl isRequired={instanceRequired}>
+          <FormLabel>Contract</FormLabel>
+          {instance.contract && (
+            <Select
+              name="contract"
+              value={instance.contract.id || ''}
+              onChange={handleContract}
+              p="0"
+              isDisabled={readOnly}
+              width="100%"
+            >
+              {contracts &&
+                contracts.map((c) => (
+                  (
+                    <option key={c.id} value={c.id}>
+                      {c.id}
+                    </option>
+                  )
+                ))
+              }
+            </Select>
+          )}
+        </FormControl>
 
-            </FormControl>
+        <FormControl isDisabled="true" visibility="hidden">
+          <FormLabel>HiddenBox</FormLabel>
+          <Input
+            type="text"
+            name=""
+            placeholder=""
+            value={''}
+            readOnly={readOnly}
+          />
+        </FormControl>
+      </HStack>
+      {/* name & lastName*/}
+      <HStack w="100%">
+        <FormControl>
+          <FormLabel>First name</FormLabel>
+          <Input
+            type="text"
+            name="name"
+            placeholder="Instance name"
+            value={instance.name || ''}
+            onChange={handleChange}
+            readOnly={readOnly}
+          />
+        </FormControl>
+        <FormControl isDisabled="true" visibility="hidden">
+          <Input
+            type="text"
+            name=""
+            placeholder=""
+            value={''}
+            readOnly={readOnly}
+          />
+        </FormControl>
+      </HStack>
+      {/* ipAddress & Type */}
+      <HStack w="100%">
+        <FormControl>
+          <FormLabel>Ip address</FormLabel>
+          <Input
+            type="text"
+            name="ipAddress"
+            placeholder="192.168.x.x"
+            value={instance.ipAddress || ''}
+            onChange={handleChange}
+            readOnly={readOnly}
+          />
+        </FormControl>
 
-            <FormControl>
-              <FormLabel>Phone</FormLabel>
-              <Input
-                type="text"
-                name="phoneNumber1"
-                placeholder="Phone"
-                value={instance.phoneNumber1 || ''}
-                onChange={handleChange}
-                readOnly={readOnly}
-              />
-            </FormControl>
+        <FormControl>
+          <FormLabel>Type</FormLabel>
+          <Input
+            type="text"
+            name="type"
+            placeholder="Type of instance"
+            value={instance.type || ''}
+            onChange={handleChange}
+            readOnly={readOnly}
+          />
+        </FormControl>
 
-          </HStack>
-          {/* isAdmin & mobile */}
-          <HStack>
-            <FormControl>
-              <FormLabel>is Administrator</FormLabel>
-              <Checkbox isDisabled={readOnly} isChecked={instance.admin} onChange={handleAdmin} name="admin" />
-            </FormControl>
+      </HStack>
+      {/* status */}
+      <HStack w="100%">
+        <FormControl>
+          <FormLabel>Status</FormLabel>
+          <Select
+            name="contracts"
+            onChange={handleStatus}
+            p="0"
+            isDisabled={readOnly}
+          >
+            <option key={`${instance.id}opt1`} value={instance.status=== 1 ? 1: 0}>
+              {instance.status === 1 ? "running" : "stopped"}
+            </option>
+            <option key={`${instance.id}opt2`} value={instance.status=== 1 ? 0: 1}>
+              {instance.status === 1 ? "stopped" : "running"}
+            </option>
+          </Select>
+        </FormControl>
 
-            <FormControl>
-              <FormLabel>Mobile</FormLabel>
-              <Input
-                type="text"
-                name="phoneNumber2"
-                placeholder="Mobile"
-                value={instance.phoneNumber2 || ''}
-                onChange={handleChange}
-                readOnly={readOnly}
-              />
-            </FormControl>
-          </HStack>
-        </>
+        <FormControl isDisabled="true" visibility="hidden">
+          <FormLabel>HiddenBox</FormLabel>
+          <Input
+            type="text"
+            name=""
+            placeholder=""
+            value={''}
+            readOnly={readOnly}
+          />
+        </FormControl>
+      </HStack>
       )
-      }
     </VStack >
   );
 };
