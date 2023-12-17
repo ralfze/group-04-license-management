@@ -14,8 +14,7 @@ import Contractervice from '../../services/ContractService';
 
 const AddInstanceComponent = () => {
   const [instance, setInstance] = useState({ contract: {} });
-  const [contract, setContract] = useState([]);
-  const [selectOption, setSelectOption] = useState("");
+  const [contracts, setContracts] = useState([]);
   const navigate = useNavigate(); // Get the navigate function from the hook
   // Now, you can use the InstanceInstanceId in your component logic
   //console.log('Instance InstanceId:', InstanceId);
@@ -29,10 +28,10 @@ const AddInstanceComponent = () => {
   const loadContract = async () => {
     try {
       const response = await Contractervice.getAllContracts();
-      setContract(response.data);
-      console.log(response.data);
+      setContracts(response.data);
+      //console.log(response.data);
     } catch (error) {
-      console.error('Error loading Contract:', error);
+      console.error('Error loading Contracts:', error);
     }
   };
 
@@ -49,32 +48,16 @@ const AddInstanceComponent = () => {
     navigate('/instances');
   };
 
-  const handleChange = (e) => {
-    const selectedContractId = e.target.value;
-    const selectedContract = contract.find((c) => String(c.contract.id) === String(selectedContractId)) || {};
-    setInstance((prevInstance) => ({
-      ...prevInstance,
-      contract: selectedContract,
-    }));
-
-    // set the chosen contract
-    setSelectOption(selectedContractId);
-    console.log(instance);
-  };
-
-
-
-
   return (
     <Box>
       <VStack>
         <HStack>
           <Heading>Add new Instance</Heading>
         </HStack>
-        <InstanceForm instance={instance} setInstance={setInstance} readOnly={false} />
+        <InstanceForm instance={instance} setInstance={setInstance} contracts={contracts} readOnly={false} />
         <HStack gap="2em">
           <Button w="50%" onClick={handleSave}>Create Instance</Button>
-          <Button w="50%" onClick={handleAbort}>Abort</Button>
+          <Button w="50%" onClick={handleAbort}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>

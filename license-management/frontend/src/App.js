@@ -19,6 +19,7 @@ import AddUserComponent from './components/Users/AddUserComponent';
 import AddInstanceComponent from './components/Instances/AddInstanceComponent';
 import EditInstanceComponent from './components/Instances/EditInstanceComponent';
 import DeleteInstanceComponent from './components/Instances/DeleteInstanceComponent';
+import DetailsInstanceComponent from './components/Instances/DetailsInstanceComponent';
 
 function App() {
   // Router for Website Routes
@@ -42,6 +43,7 @@ function App() {
         { path: '/instances/edit/:instanceId', element: <EditInstanceComponent /> },
         { path: '/instances/add', element: <AddInstanceComponent /> },
         { path: '/instances/delete/:instanceId', element: <DeleteInstanceComponent /> },
+        { path: '/instances/details/:instanceId', element: <DetailsInstanceComponent /> },
         { path: '/users', element: <UserScreen /> },
         { path: '/users/edit/:userId', element: <EditUserComponent /> },
         { path: '/users/delete/:userId', element: <DeleteUserComponent /> },

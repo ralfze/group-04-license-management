@@ -24,13 +24,16 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
     //console.log(contractss.find((c) => String(c.contracts.id) === String(e.target.value)));
     //console.log(selectedcontracts)
     //console.log(e.target.value);
+    if (!readOnly) {
+      setInstance(
 
-    setInstance((instance) => (
-      {
-        ...instance,
-        contract: (contracts.find((c) => String(c.id) === String(e.target.value))),
-      }
-    ));
+        (instance) => (
+          {
+            ...instance,
+            contract: (contracts.find((c) => String(c.id) === String(e.target.value))),
+          }
+        ));
+    }
     //console.log(instance);
   }
 
@@ -47,7 +50,7 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
   return (
     <VStack flexDirection="column" flex="1">
 
-      (instance && 
+      (instance &&
       {/* contract */}
       <HStack w="100%">
         <FormControl isRequired={instanceRequired}>
@@ -58,7 +61,7 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
               value={instance.contract.id || ''}
               onChange={handleContract}
               p="0"
-              isDisabled={readOnly}
+              isReadOnly={readOnly}
               width="100%"
             >
               {contracts &&
@@ -88,15 +91,14 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
       {/* name & lastName*/}
       <HStack w="100%">
         <FormControl>
-          <FormLabel>First name</FormLabel>
+          <FormLabel>Instance name</FormLabel>
           <Input
             type="text"
             name="name"
-            placeholder="Instance name"
+            placeholder="Empty Instance name"
             value={instance.name || ''}
             onChange={handleChange}
             readOnly={readOnly}
-            isDisabled={readOnly}
           />
         </FormControl>
         <FormControl isDisabled="true" visibility="hidden">
@@ -116,11 +118,10 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
           <Input
             type="text"
             name="ipAddress"
-            placeholder="192.168.x.x"
+            placeholder="i.e. 192.168.x.x"
             value={instance.ipAddress || ''}
             onChange={handleChange}
             readOnly={readOnly}
-            isDisabled={readOnly}
           />
         </FormControl>
 
@@ -129,11 +130,10 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
           <Input
             type="text"
             name="type"
-            placeholder="Type of instance"
+            placeholder="Empty type"
             value={instance.type || ''}
             onChange={handleChange}
             readOnly={readOnly}
-            isDisabled={readOnly}
           />
         </FormControl>
 
@@ -146,12 +146,12 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
             name="contracts"
             onChange={handleStatus}
             p="0"
-            isDisabled={readOnly}
+            isReadOnly={readOnly}
           >
-            <option key={`${instance.id}opt1`} value={instance.status=== 1 ? 1: 0}>
+            <option key={`${instance.id}opt1`} value={instance.status === 1 ? 1 : 0}>
               {instance.status === 1 ? "running" : "stopped"}
             </option>
-            <option key={`${instance.id}opt2`} value={instance.status=== 1 ? 0: 1}>
+            <option key={`${instance.id}opt2`} value={instance.status === 1 ? 0 : 1}>
               {instance.status === 1 ? "stopped" : "running"}
             </option>
           </Select>

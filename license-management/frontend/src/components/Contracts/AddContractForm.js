@@ -34,7 +34,7 @@ const AddContractComponent = () => {
     try {
       const response = await CustomerService.getAllCustomers();
       setCustomers(response.data);
-      console.log(response.data);
+      //console.log(response.data);
     } catch (error) {
       console.error('Error loading customers:', error);
     }

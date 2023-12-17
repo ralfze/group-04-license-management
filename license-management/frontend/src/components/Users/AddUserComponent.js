@@ -125,7 +125,7 @@ const AddUserComponent = () => {
         <UserForm user={user} setUser={setUser} customers={customers} customerRequired={true} readOnly={false} />
         <HStack justify="center">
           <Button onClick={handleSave}>Create User</Button>
-          <Button onClick={handleAbort}>Abort</Button>
+          <Button onClick={handleAbort}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>
