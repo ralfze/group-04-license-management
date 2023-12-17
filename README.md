@@ -25,6 +25,9 @@ Backend can be run in the folder /licensemanagement with the command \
 Frontend can be run in the folder /licensemanagement/frontend with the command \
 npm start
 
+PostgreSql on Mac
+brew services run postgresql@16
+
 ## PostgreSql Notes
 Database-name: licenseman
 

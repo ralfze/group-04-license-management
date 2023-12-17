@@ -25,23 +25,26 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
     //console.log(customers.find((c) => String(c.customer.id) === String(e.target.value)));
     //console.log(selectedCustomer)
     //console.log(e.target.value);
-
-    setUser((user) => (
-      {
-        ...user,
-        customer: (customers.find((c) => String(c.customer.id) === String(e.target.value))).customer,
-      }
-    ));
+    if (!readOnly) {
+      setUser((user) => (
+        {
+          ...user,
+          customer: (customers.find((c) => String(c.customer.id) === String(e.target.value))).customer,
+        }
+      ));
+    }
     //console.log(user);
   }
 
   const handleAdmin = (e) => {
     //console.log(`name: ${e.target.name} value: ${e.target.value}`);
-    setUser((user) => (
-      {
-        ...user,
-        admin: !user.admin,
-      }));
+    if (!readOnly) {
+      setUser((user) => (
+        {
+          ...user,
+          admin: !user.admin,
+        }));
+    }
   }
 
   return (
@@ -49,28 +52,28 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
       {user && (
         <>
           {/* Customer */}
-          <HStack>
+          <HStack w="100%">
             <FormControl isRequired={customerRequired}>
               <FormLabel>Customer</FormLabel>
               {user.customer && (
-              <Select
-                name="customer"
-                value={user.customer.id || ''}
-                onChange={handleCustomer}
-                p="0"
-                isDisabled={readOnly}   
-              >
-                {customers &&
-                  customers.map((c) => (
-                    (
-                      c.customer && (
-                        <option key={c.customer.id} value={c.customer.id}>
-                          {c.customer.name}
-                        </option>)
-                    )
-                  ))
-                }
-              </Select>
+                <Select
+                  name="customer"
+                  value={user.customer.id || ''}
+                  onChange={handleCustomer}
+                  p="0"
+                  readOnly={readOnly}
+                >
+                  {customers &&
+                    customers.map((c) => (
+                      (
+                        c.customer && (
+                          <option key={c.customer.id} value={c.customer.id}>
+                            {c.customer.name}
+                          </option>)
+                      )
+                    ))
+                  }
+                </Select>
               )}
             </FormControl>
 
@@ -85,7 +88,7 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
             </FormControl>
           </HStack>
           {/* firstName & lastName*/}
-          <HStack alignContent="left" alignItems="left" justifyContent="left" >
+          <HStack w="100%">
             <FormControl>
               <FormLabel>First name</FormLabel>
               <Input
@@ -110,7 +113,7 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
             </FormControl>
           </HStack>
           {/* email & phone */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Email</FormLabel>
               <Input
@@ -138,10 +141,10 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
 
           </HStack>
           {/* isAdmin & mobile */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
-              <FormLabel>is Administrator</FormLabel>
-              <Checkbox isDisabled={readOnly} isChecked={user.admin} onChange={handleAdmin} name="admin" />
+              <FormLabel>Is Administrator</FormLabel>
+              <Checkbox isReadOnly={readOnly} isChecked={user.admin} onChange={handleAdmin} name="admin" />
             </FormControl>
 
             <FormControl>

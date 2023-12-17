@@ -8,10 +8,10 @@ import {
   Heading,
   Flex,
   Spacer,
-  VStack,
 } from '@chakra-ui/react';
 import { IconLogout } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import InstanceListComponent from '../components/Instances/InstanceListComponent';
 
 const InstanceScreen = () => {
   return (
@@ -21,7 +21,7 @@ const InstanceScreen = () => {
         <Spacer />
 
         <HStack spacing="1em">
-          <Button as={Link} to="/add" variant="solid" size="md">
+          <Button as={Link} to="add/" variant="solid" size="md">
             Add
           </Button>
           <Button
@@ -57,144 +57,7 @@ const InstanceScreen = () => {
             Users
           </Button>
         </Flex>
-
-        <Flex
-          as="div"
-          direction="column"
-          paddingTop="0em"
-          paddingLeft="1em"
-          gap="0.5em"
-          flex="9"
-        >
-          <HStack flex="1" alignItems="start">
-            <Heading as="h2" size="md" flex="0" align="flex-start">
-              Customer
-            </Heading>
-
-            <VStack flex="1">
-              <HStack flex="1">
-
-              <Heading as="h2" size="md" flex="1">
-                  Instance BA
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract start
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract end
-                </Heading>
-
-                
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/contracts"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Details
-                </Button>
-              </HStack>
-              <HStack flex="1">
-
-              <Heading as="h2" size="md" flex="1">
-                  Instance BB
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract start
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract end
-                </Heading>
-
-                
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/contracts"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Details
-                </Button>
-              </HStack>
-              <HStack flex="1">
-
-              <Heading as="h2" size="md" flex="1">
-                  Instance BC
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract start
-                </Heading>
-
-                <Heading as="h2" size="md" flex="1">
-                  Contract end
-                </Heading>
-
-                
-
-                <Button as={Link} to="edit" variant="solid" size="md" flex="1">
-                  Edit
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/delete"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Delete
-                </Button>
-
-                <Button
-                  as={Link}
-                  to="/contracts"
-                  variant="solid"
-                  size="md"
-                  flex="1"
-                >
-                  Details
-                </Button>
-              </HStack>
-            </VStack>
-          </HStack>
-        </Flex>
+        <InstanceListComponent />
       </Flex>
     </Box>
   );

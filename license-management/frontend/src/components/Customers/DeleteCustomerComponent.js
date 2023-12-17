@@ -41,11 +41,14 @@ const DeleteCustomerComponent = () => {
     }
 
     return (
-            <Box>
-                <VStack>
-                    <Heading>Do you want to delete the Customer?</Heading>
-                    {customer.customer && (
-                        <>
+        <Box>
+            <VStack>
+                {customer.customer && (
+                    <>
+                    <HStack>
+                    <Heading>Delete Customer</Heading>
+                    </HStack>
+                        <HStack>
                             <FormControl>
                                 <FormLabel>Name</FormLabel>
                                 <Input
@@ -56,7 +59,8 @@ const DeleteCustomerComponent = () => {
                                     isDisabled={true}
                                 />
                             </FormControl>
-
+                        </HStack>
+                        <HStack>
                             <FormControl mt={4}>
                                 <FormLabel>Street</FormLabel>
                                 <Input
@@ -67,7 +71,8 @@ const DeleteCustomerComponent = () => {
                                     isDisabled={true}
                                 />
                             </FormControl>
-
+                        </HStack>
+                        <HStack>
                             <FormControl mt={4}>
                                 <FormLabel>Zipcode</FormLabel>
                                 <Input
@@ -78,7 +83,8 @@ const DeleteCustomerComponent = () => {
                                     isDisabled={true}
                                 />
                             </FormControl>
-
+                        </HStack>
+                        <HStack>
                             <FormControl mt={4}>
                                 <FormLabel>Town</FormLabel>
                                 <Input
@@ -89,7 +95,7 @@ const DeleteCustomerComponent = () => {
                                     isDisabled={true}
                                 />
                             </FormControl>
-
+                        </HStack><HStack>
                             <FormControl mt={4}>
                                 <FormLabel>Country</FormLabel>
                                 <Input
@@ -100,14 +106,16 @@ const DeleteCustomerComponent = () => {
                                     isDisabled={true}
                                 />
                             </FormControl>
-                        </>
-                    )}
-                </VStack>
-                <HStack>
-                    <Button onClick={handleDelete}>Delete</Button>
-                    <Button onClick={handleAbort}>Abort</Button>
+                        </HStack>
+                    </>
+                )}
+
+                <HStack gap="2em">
+                    <Button w="50%" onClick={handleDelete}>Delete</Button>
+                    <Button w="50%" onClick={handleAbort}>Cancel</Button>
                 </HStack>
-            </Box>
+            </VStack>
+        </Box>
     );
 };
 

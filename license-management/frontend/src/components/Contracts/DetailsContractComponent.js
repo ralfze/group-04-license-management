@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ContractService from '../../services/ContractService';
 import ContractForm from './ContractForm';
 
-const DeleteContractComponent = () => {
+const DetailsContractComponent = () => {
     const { contractId } = useParams();
     const [contract, setContract] = useState({});
     const navigate = useNavigate(); // Get the navigate function from the hook
@@ -27,16 +27,6 @@ const DeleteContractComponent = () => {
 
     }, [contractId, navigate]);
 
-    const handleDelete = async () => {
-        try {
-            // Id of the contract object 
-            await ContractService.deleteContract(contractId);
-            navigate('/contracts');
-        } catch (error) {
-            console.error('Error updating contract:', error);
-        }
-    };
-
     const handleAbort = () => {
         navigate('/contracts');
     }
@@ -45,17 +35,16 @@ const DeleteContractComponent = () => {
         <Box>
             <VStack>
                 <HStack>
-                    <Heading>Delete Contract</Heading>
+                    <Heading>Details Contract</Heading>
                 </HStack>
                 <ContractForm contract={contract} setContract={setContract} readOnly={true} />
 
-                <HStack gap="2em">
-                    <Button w="50%" onClick={handleDelete}>Delete</Button>
-                    <Button w="50%" onClick={handleAbort}>Cancel</Button>
+                <HStack gap="2em" w="20%">
+                    <Button w="100%" onClick={handleAbort}>Back</Button>
                 </HStack>
             </VStack>
         </Box>
     );
 };
 
-export default DeleteContractComponent;
+export default DetailsContractComponent;

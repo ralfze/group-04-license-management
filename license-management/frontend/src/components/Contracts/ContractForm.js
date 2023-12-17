@@ -8,23 +8,36 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
       {
         ...contract,
         [e.target.name]: e.target.value,
+      }));
+  };
+
+  const handleUser1 = (e) => {
+    setContract((contract) => (
+      {
+        ...contract,
         user1: {
-          ...(contract.user1 || {}), // Initialize if undefined
-          [e.target.name]: e.target.value,
-        },
-        user2: {
-          ...(contract.user2 || {}), // Initialize if undefined
           [e.target.name]: e.target.value,
         },
       }));
-  };
+  }
+
+
+  const handleUser2 = (e) => {
+    setContract((contract) => (
+      {
+        ...contract,
+        user2: {
+          [e.target.name]: e.target.value,
+        },
+      }));
+  }
 
   return (
     <VStack>
       {contract && (
         <>
           {/* Start and End Date */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Start</FormLabel>
               <Input
@@ -34,7 +47,6 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
                 value={contract.startDate || ''}
                 onChange={handleChange}
                 readOnly={readOnly}
-
               />
             </FormControl>
 
@@ -46,13 +58,12 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
                 placeholder="Enddate"
                 value={contract.endDate || ''}
                 onChange={handleChange}
-
-
+                readOnly={readOnly}
               />
             </FormControl>
           </HStack>
           {/* Version*/}
-          <HStack alignContent="left" alignItems="left" justifyContent="left" >
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Version</FormLabel>
               <Input
@@ -75,14 +86,15 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
             </FormControl>
           </HStack>
           {/* Responsible Users */}
-          <HStack>
+          <HStack w="100%">
+            {/*
             <FormControl>
               <FormLabel>Responsible 01</FormLabel>
               {contract.user1 &&
                 <Select
                   name="user1"
                   value={contract.user1 || ''}
-                  onChange={handleChange}
+                  onChange={handleUser2}
                   p="0"
                   readOnly={readOnly}
                 >
@@ -95,24 +107,24 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
 
             <FormControl>
               <FormLabel>Responsible 02</FormLabel>
-              {contract.user1 &&
+              {contract.user2 &&
                 <Select
                   name="user2"
                   value={contract.user2 || ''}
-                  onChange={handleChange}
+                  onChange={handleUser2}
                   p="0"
                   readOnly={readOnly}
                 >
-                  <option value={contract.user2 || ''}>{contract.user2.firstName}</option>
+                  <option value={contract.user2 ? contract.user2 : "No user selected" || ''}>{contract.user2 ? contract.user2 : "No user selected" }</option>
                   <option value="option2" >Option 2</option>
                   <option value="option3" >Option 3</option>
                 </Select>
               }
             </FormControl>
-
+            */}
           </HStack>
           {/* ipAddress1 */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Ip number</FormLabel>
               <Input
@@ -139,7 +151,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
           </HStack>
 
           {/* ipAddress2 */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Ip number</FormLabel>
               <Input
@@ -166,7 +178,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
           </HStack>
 
           {/* ipAddress3 */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Ip number</FormLabel>
               <Input
@@ -192,7 +204,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
             </FormControl>
           </HStack>
           {/* License Text Area*/}
-          <HStack>
+          <HStack w="100%">
             <Textarea
               value={contract.licenseKey || ''}
               name="licenseKey"

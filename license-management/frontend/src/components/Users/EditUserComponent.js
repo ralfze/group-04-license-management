@@ -1,6 +1,6 @@
 // frontend/src/components/Users/EditUserComponent.js
 import React, { useEffect, useState } from 'react';
-import { Box, Button, HStack, VStack } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack, Heading } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import UserForm from './UserForm';
 import UserService from '../../services/UserService';
@@ -16,21 +16,20 @@ const EditUserComponent = () => {
   //console.log('User UserId:', UserId);
 
   useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const response = await UserService.getUserById(userId);
+        setUser(response.data);
+        //console.log(response.data);
+      } catch (error) {
+        console.error('Error loading User:', error);
+      }
+    };
+
     loadUser();
     loadCustomers();
 
   }, [userId, navigate]);
-
-
-  const loadUser = async () => {
-    try {
-      const response = await UserService.getUserById(userId);
-      setUser(response.data);
-      //console.log(response.data);
-    } catch (error) {
-      console.error('Error loading User:', error);
-    }
-  };
 
   const loadCustomers = async () => {
     try {
@@ -58,10 +57,13 @@ const EditUserComponent = () => {
   return (
     <Box>
       <VStack>
+        <HStack>
+          <Heading>Edit User</Heading>
+        </HStack>
         <UserForm user={user} setUser={setUser} customers={customers} />
-        <HStack justify="center">
-          <Button onClick={handleSave}>Save</Button>
-          <Button onClick={handleCancel}>Cancel</Button>
+        <HStack gap="2em">
+          <Button w="50%" onClick={handleSave}>Save</Button>
+          <Button w="50%" onClick={handleCancel}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>

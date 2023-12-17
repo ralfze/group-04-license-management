@@ -1,6 +1,6 @@
 // frontend/src/App.js
 import React from 'react';
-import { ChakraProvider} from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import LoginScreen from './routes/LoginScreen';
 import CustomerScreen from './routes/CustomerScreen';
@@ -16,6 +16,11 @@ import AddContractComponent from './components/Contracts/AddContractForm';
 import EditUserComponent from './components/Users/EditUserComponent';
 import DeleteUserComponent from './components/Users/DeleteUserComponent';
 import AddUserComponent from './components/Users/AddUserComponent';
+import AddInstanceComponent from './components/Instances/AddInstanceComponent';
+import EditInstanceComponent from './components/Instances/EditInstanceComponent';
+import DeleteInstanceComponent from './components/Instances/DeleteInstanceComponent';
+import DetailsInstanceComponent from './components/Instances/DetailsInstanceComponent';
+import DetailsContractComponent from './components/Contracts/DetailsContractComponent';
 
 function App() {
   // Router for Website Routes
@@ -27,15 +32,20 @@ function App() {
           element: <Navigate to="/login" replace={true} />,
         },
         { path: '/login', element: <LoginScreen /> },
-        { path: '/customers', element: <CustomerScreen /> },
-        { path: '/customers/edit/:customerId', element: <EditCustomerComponent /> },
-        { path: '/customers/add', element: <AddCustomerComponent /> },
-        { path: '/customers/delete/:customerId', element: <DeleteCustomerComponent /> },
         { path: '/contracts', element: <ContractScreen /> },
         { path: '/contracts/add', element: <AddContractComponent /> },
         { path: '/contracts/edit/:contractId', element: <EditContractComponent /> },
         { path: '/contracts/delete/:contractId', element: <DeleteContractComponent /> },
+        { path: '/contracts/details/:contractId', element: <DetailsContractComponent /> },
+        { path: '/customers', element: <CustomerScreen /> },
+        { path: '/customers/edit/:customerId', element: <EditCustomerComponent /> },
+        { path: '/customers/add', element: <AddCustomerComponent /> },
+        { path: '/customers/delete/:customerId', element: <DeleteCustomerComponent /> },
         { path: '/instances', element: <InstanceScreen /> },
+        { path: '/instances/edit/:instanceId', element: <EditInstanceComponent /> },
+        { path: '/instances/add', element: <AddInstanceComponent /> },
+        { path: '/instances/delete/:instanceId', element: <DeleteInstanceComponent /> },
+        { path: '/instances/details/:instanceId', element: <DetailsInstanceComponent /> },
         { path: '/users', element: <UserScreen /> },
         { path: '/users/edit/:userId', element: <EditUserComponent /> },
         { path: '/users/delete/:userId', element: <DeleteUserComponent /> },
@@ -45,7 +55,7 @@ function App() {
   ]);
   return (
     <ChakraProvider >
-       <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
     </ChakraProvider>
   );
 }

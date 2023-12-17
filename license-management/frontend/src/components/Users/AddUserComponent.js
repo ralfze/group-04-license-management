@@ -96,7 +96,7 @@ const AddUserComponent = () => {
   return (
     <Box>
       <VStack>
-        <Heading>Create a new user.</Heading>
+        <Heading>Add new User</Heading>
         {/* username & password */}
         <HStack>
           <FormControl isRequired={true}>
@@ -123,9 +123,9 @@ const AddUserComponent = () => {
 
         </HStack>
         <UserForm user={user} setUser={setUser} customers={customers} customerRequired={true} readOnly={false} />
-        <HStack justify="center">
-          <Button onClick={handleSave}>Create User</Button>
-          <Button onClick={handleAbort}>Abort</Button>
+        <HStack gap="2em">
+          <Button w="50%" onClick={handleSave}>Create User</Button>
+          <Button w="50%" onClick={handleAbort}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>

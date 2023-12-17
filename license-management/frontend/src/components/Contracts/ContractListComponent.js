@@ -59,7 +59,7 @@ const ContractListComponent = ({ navigate }) => {
               Delete
             </Button>
 
-            <Button as={Link} to={`${contract.id}`} variant="solid" size="md" flex="1" key={`details-${contract.id}`}>
+            <Button as={Link} to={`details/${contract.id}`} variant="solid" size="md" flex="1" key={`details-${contract.id}`}>
               Details
             </Button>
           </HStack>
