@@ -46,7 +46,7 @@ const EditContractComponent = () => {
         <ContractForm contract={contract} setContract={setContract} />
         <HStack justify="center">
           <Button onClick={handleSave}>Save</Button>
-          <Button onClick={handleAbort}>Abort</Button>
+          <Button onClick={handleAbort}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>

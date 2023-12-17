@@ -49,7 +49,7 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
       {user && (
         <>
           {/* Customer */}
-          <HStack>
+          <HStack w="100%">
             <FormControl isRequired={customerRequired}>
               <FormLabel>Customer</FormLabel>
               {user.customer && (
@@ -85,7 +85,7 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
             </FormControl>
           </HStack>
           {/* firstName & lastName*/}
-          <HStack alignContent="left" alignItems="left" justifyContent="left" >
+          <HStack w="100%">
             <FormControl>
               <FormLabel>First name</FormLabel>
               <Input
@@ -110,7 +110,7 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
             </FormControl>
           </HStack>
           {/* email & phone */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Email</FormLabel>
               <Input
@@ -138,9 +138,9 @@ const UserForm = ({ user, setUser, customers, customerRequired, readOnly }) => {
 
           </HStack>
           {/* isAdmin & mobile */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
-              <FormLabel>is Administrator</FormLabel>
+              <FormLabel>Is Administrator</FormLabel>
               <Checkbox isDisabled={readOnly} isChecked={user.admin} onChange={handleAdmin} name="admin" />
             </FormControl>
 

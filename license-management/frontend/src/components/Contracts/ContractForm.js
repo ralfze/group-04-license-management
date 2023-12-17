@@ -76,6 +76,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
           </HStack>
           {/* Responsible Users */}
           <HStack>
+            {/*
             <FormControl>
               <FormLabel>Responsible 01</FormLabel>
               {contract.user1 &&
@@ -109,7 +110,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
                 </Select>
               }
             </FormControl>
-
+            */}
           </HStack>
           {/* ipAddress1 */}
           <HStack>
@@ -192,7 +193,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
             </FormControl>
           </HStack>
           {/* License Text Area*/}
-          <HStack>
+          <HStack w="100%">
             <Textarea
               value={contract.licenseKey || ''}
               name="licenseKey"

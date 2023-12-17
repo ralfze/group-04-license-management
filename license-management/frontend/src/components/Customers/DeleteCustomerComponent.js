@@ -105,7 +105,7 @@ const DeleteCustomerComponent = () => {
                 </VStack>
                 <HStack>
                     <Button onClick={handleDelete}>Delete</Button>
-                    <Button onClick={handleAbort}>Abort</Button>
+                    <Button onClick={handleAbort}>Cancel</Button>
                 </HStack>
             </Box>
     );
