@@ -14,11 +14,11 @@ const CustomerService = {
   },
 
   createCustomer: async (customer) => {
-    return await axios.post(`${baseURL}/api/customers/`, customer);
+    return await axios.post(`${baseURL}/api/customers`, customer);
   },
 
   updateCustomer: async (customerId, customer) => {
-    return await axios.put(`${baseURL}/api/customers//${customerId}`, customer);
+    return await axios.put(`${baseURL}/api/customers/${customerId}`, customer);
   },
 
   deleteCustomer: async (customerId) => {

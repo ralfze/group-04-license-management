@@ -6,7 +6,8 @@ import jakarta.persistence.*;
 public class Instance {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "instance_sequence")
+    @SequenceGenerator(name = "instance_sequence", sequenceName = "instance_sequence", allocationSize = 1, initialValue = 15)
     private Long id;
 
     @Column(length = 30)
