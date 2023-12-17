@@ -17,7 +17,7 @@ import ContractService from '../../services/ContractService';
 import CustomerService from '../../services/CustomerService';
 
 const AddContractComponent = () => {
-  const [contract, setContract] = useState({ customer: {} });
+  const [contract, setContract] = useState({ customer: {}, user1:null, user2:null });
   const [customers, setCustomers] = useState([]);
   const [selectOption, setSelectOption] = useState("");
   const navigate = useNavigate(); // Get the navigate function from the hook
@@ -55,7 +55,7 @@ const AddContractComponent = () => {
 
   const handleChange = (e) => {
     const selectedCustomerId = e.target.value;
-    const selectedCustomer = customers.find((c) => String(c.customer.id) === String(selectedCustomerId)) || {};
+    const selectedCustomer = customers.find((c) => String(c.customer.id) === String(selectedCustomerId)).customer || {};
     setContract((prevContract) => ({
       ...prevContract,
       customer: selectedCustomer,

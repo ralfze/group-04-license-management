@@ -7,8 +7,8 @@ import java.util.Date;
 public class Contract {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contract")
-    @SequenceGenerator(name = "contract", sequenceName = "contract", allocationSize = 1, initialValue = 15)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contract_sequence")
+    @SequenceGenerator(name = "contract_sequence", sequenceName = "contract_sequence", allocationSize = 1, initialValue = 15)
     private Long id;
 
     @Temporal(TemporalType.DATE)

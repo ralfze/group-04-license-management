@@ -8,16 +8,29 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
       {
         ...contract,
         [e.target.name]: e.target.value,
+      }));
+  };
+
+  const handleUser1 = (e) => {
+    setContract((contract) => (
+      {
+        ...contract,
         user1: {
-          ...(contract.user1 || {}), // Initialize if undefined
-          [e.target.name]: e.target.value,
-        },
-        user2: {
-          ...(contract.user2 || {}), // Initialize if undefined
           [e.target.name]: e.target.value,
         },
       }));
-  };
+  }
+
+
+  const handleUser2 = (e) => {
+    setContract((contract) => (
+      {
+        ...contract,
+        user2: {
+          [e.target.name]: e.target.value,
+        },
+      }));
+  }
 
   return (
     <VStack>
@@ -83,7 +96,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
                 <Select
                   name="user1"
                   value={contract.user1 || ''}
-                  onChange={handleChange}
+                  onChange={handleUser2}
                   p="0"
                   readOnly={readOnly}
                 >
@@ -100,7 +113,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
                 <Select
                   name="user2"
                   value={contract.user2 || ''}
-                  onChange={handleChange}
+                  onChange={handleUser2}
                   p="0"
                   readOnly={readOnly}
                 >
