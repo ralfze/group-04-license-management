@@ -96,7 +96,7 @@ const AddUserComponent = () => {
   return (
     <Box>
       <VStack>
-        <Heading>Create a new user.</Heading>
+        <Heading>Add new User</Heading>
         {/* username & password */}
         <HStack>
           <FormControl isRequired={true}>

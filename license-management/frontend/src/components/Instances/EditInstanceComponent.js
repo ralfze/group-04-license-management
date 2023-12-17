@@ -1,6 +1,6 @@
 // frontend/src/components/Instances/EditInstanceComponent.js
 import React, { useEffect, useState } from 'react';
-import { Box, Button, HStack, VStack } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack, Heading } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import InstanceForm from './InstanceForm';
 import InstanceService from '../../services/InstanceService';
@@ -57,6 +57,9 @@ const EditInstanceComponent = () => {
   return (
     <Box>
       <VStack>
+        <HStack>
+          <Heading>Edit Instance</Heading>
+        </HStack>
         <InstanceForm instance={instance} setInstance={setInstance} contracts={contracts} />
         <HStack justify="center">
           <Button onClick={handleSave}>Save</Button>

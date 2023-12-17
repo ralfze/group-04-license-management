@@ -1,6 +1,6 @@
 // frontend/src/components/Contracts/EditContractComponent.js
 import React, { useEffect, useState } from 'react';
-import { Box, Button, HStack, VStack } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack, Heading } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ContractForm from './ContractForm';
 import ContractService from '../../services/ContractService';
@@ -43,10 +43,13 @@ const EditContractComponent = () => {
   return (
     <Box>
       <VStack>
+        <HStack>
+          <Heading>Edit Contract</Heading>
+        </HStack>
         <ContractForm contract={contract} setContract={setContract} />
-        <HStack justify="center">
-          <Button onClick={handleSave}>Save</Button>
-          <Button onClick={handleAbort}>Cancel</Button>
+        <HStack justify="center" gap="2em">
+          <Button w="50% "onClick={handleSave}>Save</Button>
+          <Button w="50%" onClick={handleAbort}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>

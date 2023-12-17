@@ -58,7 +58,7 @@ const DeleteUserComponent = () => {
     return (
         <Box>
             <VStack>
-                <Heading>Do you want to delete the User?</Heading>
+                <Heading>Delete User</Heading>
                 <UserForm user={user} setUser={setUser} customers={customers} readOnly={true} />
 
                 <HStack>

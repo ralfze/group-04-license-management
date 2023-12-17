@@ -44,12 +44,14 @@ const DeleteContractComponent = () => {
     return (
         <Box>
             <VStack>
-                <Heading>Do you want to delete the Customer?</Heading>
+                <HStack>
+                    <Heading>Delete Contract</Heading>
+                </HStack>
                 <ContractForm contract={contract} setContract={setContract} readOnly={true} />
 
-                <HStack>
-                    <Button onClick={handleDelete}>Delete</Button>
-                    <Button onClick={handleAbort}>Cancel</Button>
+                <HStack gap="2em">
+                    <Button w="50%" onClick={handleDelete}>Delete</Button>
+                    <Button w="50%" onClick={handleAbort}>Cancel</Button>
                 </HStack>
             </VStack>
         </Box>

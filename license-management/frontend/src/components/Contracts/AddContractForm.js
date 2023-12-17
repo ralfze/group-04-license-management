@@ -8,7 +8,8 @@ import {
   Input,
   FormControl,
   FormLabel,
-  Select
+  Select,
+  Heading,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import ContractForm from './ContractForm';
@@ -64,19 +65,22 @@ const AddContractComponent = () => {
     setSelectOption(selectedCustomerId);
     console.log(contract);
   };
-  
+
 
 
 
   return (
     <Box>
       <VStack>
-        <HStack alignContent="left" alignItems="left" justifyContent="left" >
+        <HStack>
+          <Heading>Add new Contract</Heading>
+        </HStack>
+        <HStack w="50%">
           <FormControl>
             <FormLabel>Customer</FormLabel>
             <Select
               name="customer"
-              value={ selectOption||''}
+              value={selectOption || ''}
               onChange={handleChange}
               p="0"
             >
@@ -93,6 +97,7 @@ const AddContractComponent = () => {
             </Select>
           </FormControl>
           <FormControl isDisabled="true" visibility="hidden">
+          <FormLabel>HiddenBox</FormLabel>
             <Input
               type="text"
               name=""
@@ -101,10 +106,10 @@ const AddContractComponent = () => {
             />
           </FormControl>
         </HStack>
-        <ContractForm contract={contract} setContract={setContract} readOnly={false}/>
-        <HStack justify="center">
-          <Button onClick={handleSave}>Create Contract</Button>
-          <Button onClick={handleAbort}>Abort</Button>
+        <ContractForm contract={contract} setContract={setContract} readOnly={false} />
+        <HStack justify="center" gap="2em">
+          <Button w="50%" onClick={handleSave}>Create Contract</Button>
+          <Button w="50%" onClick={handleAbort}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>

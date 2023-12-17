@@ -1,6 +1,6 @@
 // frontend/src/components/Users/EditUserComponent.js
 import React, { useEffect, useState } from 'react';
-import { Box, Button, HStack, VStack } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack, Heading } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import UserForm from './UserForm';
 import UserService from '../../services/UserService';
@@ -57,6 +57,9 @@ const EditUserComponent = () => {
   return (
     <Box>
       <VStack>
+        <HStack>
+          <Heading>Edit User</Heading>
+        </HStack>
         <UserForm user={user} setUser={setUser} customers={customers} />
         <HStack justify="center">
           <Button onClick={handleSave}>Save</Button>

@@ -5,10 +5,7 @@ import {
   Button,
   HStack,
   VStack,
-  Input,
-  FormControl,
-  FormLabel,
-  Select
+  Heading,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import InstanceForm from './InstanceForm';
@@ -64,44 +61,17 @@ const AddInstanceComponent = () => {
     setSelectOption(selectedContractId);
     console.log(instance);
   };
-  
+
 
 
 
   return (
     <Box>
       <VStack>
-        <HStack alignContent="left" alignItems="left" justifyContent="left" >
-          <FormControl>
-            <FormLabel>Contract</FormLabel>
-            <Select
-              name="contract"
-              value={ selectOption||''}
-              onChange={handleChange}
-              p="0"
-            >
-              {contract &&
-                contract.map((c) => (
-                  (
-                    c.contract && (
-                      <option key={c.contract.id} value={c.contract.id}>
-                        {c.contract.name}
-                      </option>)
-                  )
-                ))
-              }
-            </Select>
-          </FormControl>
-          <FormControl isDisabled="true" visibility="hidden">
-            <Input
-              type="text"
-              name=""
-              placeholder=""
-              value={''}
-            />
-          </FormControl>
+        <HStack>
+          <Heading>Add new Instance</Heading>
         </HStack>
-        <InstanceForm instance={instance} setInstance={setInstance} readOnly={false}/>
+        <InstanceForm instance={instance} setInstance={setInstance} readOnly={false} />
         <HStack justify="center">
           <Button onClick={handleSave}>Create Instance</Button>
           <Button onClick={handleAbort}>Abort</Button>

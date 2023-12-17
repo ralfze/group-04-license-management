@@ -24,7 +24,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
       {contract && (
         <>
           {/* Start and End Date */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Start</FormLabel>
               <Input
@@ -52,7 +52,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
             </FormControl>
           </HStack>
           {/* Version*/}
-          <HStack alignContent="left" alignItems="left" justifyContent="left" >
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Version</FormLabel>
               <Input
@@ -75,7 +75,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
             </FormControl>
           </HStack>
           {/* Responsible Users */}
-          <HStack>
+          <HStack w="100%">
             {/*
             <FormControl>
               <FormLabel>Responsible 01</FormLabel>
@@ -113,7 +113,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
             */}
           </HStack>
           {/* ipAddress1 */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Ip number</FormLabel>
               <Input
@@ -140,7 +140,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
           </HStack>
 
           {/* ipAddress2 */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Ip number</FormLabel>
               <Input
@@ -167,7 +167,7 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
           </HStack>
 
           {/* ipAddress3 */}
-          <HStack>
+          <HStack w="100%">
             <FormControl>
               <FormLabel>Ip number</FormLabel>
               <Input

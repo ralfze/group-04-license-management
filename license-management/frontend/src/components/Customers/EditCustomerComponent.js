@@ -1,6 +1,6 @@
 // frontend/src/components/Customers/EditCustomerComponent.js
 import React, { useEffect, useState } from 'react';
-import { Box, Button, HStack, VStack } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack, Heading } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CustomerForm from './CustomerForm';
 import CustomerService from '../../services/CustomerService';
@@ -43,6 +43,9 @@ const EditCustomerComponent = () => {
   return (
     <Box>
       <VStack>
+        <HStack>
+          <Heading>Edit Customer</Heading>
+        </HStack>
         <CustomerForm customer={customer} setCustomer={setCustomer} />
         <HStack gap="2em">
           <Button w="50%" onClick={handleSave}>Save</Button>
