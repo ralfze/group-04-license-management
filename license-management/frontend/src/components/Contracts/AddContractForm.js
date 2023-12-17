@@ -17,7 +17,7 @@ import ContractService from '../../services/ContractService';
 import CustomerService from '../../services/CustomerService';
 
 const AddContractComponent = () => {
-  const [contract, setContract] = useState({ customer: {}, user1:null, user2:null });
+  const [contract, setContract] = useState({ customer: {}, user1: null, user2: null });
   const [customers, setCustomers] = useState([]);
   const [selectOption, setSelectOption] = useState("");
   const navigate = useNavigate(); // Get the navigate function from the hook
@@ -97,7 +97,7 @@ const AddContractComponent = () => {
             </Select>
           </FormControl>
           <FormControl isDisabled="true" visibility="hidden">
-          <FormLabel>HiddenBox</FormLabel>
+            <FormLabel>HiddenBox</FormLabel>
             <Input
               type="text"
               name=""

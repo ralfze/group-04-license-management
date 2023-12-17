@@ -61,9 +61,9 @@ const EditInstanceComponent = () => {
           <Heading>Edit Instance</Heading>
         </HStack>
         <InstanceForm instance={instance} setInstance={setInstance} contracts={contracts} />
-        <HStack justify="center">
-          <Button onClick={handleSave}>Save</Button>
-          <Button onClick={handleCancel}>Cancel</Button>
+        <HStack gap="2em">
+          <Button w="50%" onClick={handleSave}>Save</Button>
+          <Button w="50%" onClick={handleCancel}>Cancel</Button>
         </HStack>
       </VStack>
     </Box>

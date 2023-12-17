@@ -72,9 +72,9 @@ const AddInstanceComponent = () => {
           <Heading>Add new Instance</Heading>
         </HStack>
         <InstanceForm instance={instance} setInstance={setInstance} readOnly={false} />
-        <HStack justify="center">
-          <Button onClick={handleSave}>Create Instance</Button>
-          <Button onClick={handleAbort}>Abort</Button>
+        <HStack gap="2em">
+          <Button w="50%" onClick={handleSave}>Create Instance</Button>
+          <Button w="50%" onClick={handleAbort}>Abort</Button>
         </HStack>
       </VStack>
     </Box>

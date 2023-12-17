@@ -96,6 +96,7 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
             value={instance.name || ''}
             onChange={handleChange}
             readOnly={readOnly}
+            isDisabled={readOnly}
           />
         </FormControl>
         <FormControl isDisabled="true" visibility="hidden">
@@ -119,6 +120,7 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
             value={instance.ipAddress || ''}
             onChange={handleChange}
             readOnly={readOnly}
+            isDisabled={readOnly}
           />
         </FormControl>
 
@@ -131,6 +133,7 @@ const InstanceForm = ({ instance, setInstance, contracts, instanceRequired, read
             value={instance.type || ''}
             onChange={handleChange}
             readOnly={readOnly}
+            isDisabled={readOnly}
           />
         </FormControl>
 
