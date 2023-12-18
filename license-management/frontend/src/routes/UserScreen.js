@@ -10,10 +10,21 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 import { IconLogout } from '@tabler/icons-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserListComponent from '../components/Users/UserListComponent';
 
 const UserScreen = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    // Set the token cookie's expiration date in the past
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+    // Redirect to the login screen or any other route
+    // based on your application logic
+    navigate('/login');
+  };
+
+
   return (
     <Box>
       <Flex as="div" p="1em" alignItems="center" direction="row">
@@ -26,7 +37,7 @@ const UserScreen = () => {
           </Button>
           <Input placeholder="filter"></Input>
           <Avatar></Avatar>
-          <Button as={Link} to="/login" variant="solid" size="md">
+          <Button as={Link} onClick={()=>handleLogout()} variant="solid" size="md">
             <IconLogout size="4em" />
           </Button>
         </HStack>

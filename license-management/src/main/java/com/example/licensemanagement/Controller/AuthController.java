@@ -37,17 +37,17 @@ public class AuthController {
     public ResponseEntity<String> login(@RequestBody LoginRequestDTO loginRequest) {
         // Retrieve user by loginName
         String loginName = loginRequest.getLoginName();
-        System.out.println(loginName);
+        User user = (User) userService.getUserByLoginName(loginName);
 
-        com.example.licensemanagement.Entity.User user = (User) userService.getUserByLoginName(loginName);
-                System.out.println(passwordEncoder.matches(loginRequest.getPassword(),
-                (String) user.getPassword()));
-        System.out.println(passwordEncoder.encode("password"));
         // Check if the user exists and the password is correct
         if (user != null && passwordEncoder.matches(loginRequest.getPassword(),
                 (String) user.getPassword())) {
             // Assuming a successful login, generate a token
             String token = JwtUtil.generateToken(loginRequest.getLoginName());
+            // Store token in the backend
+            //user.setToken(token);
+            //userService.updateUser(user.getId(), user);
+            // Return Token to the frontend
             return ResponseEntity.ok(token);
         } else {
             return ResponseEntity.status(401).body("Invalid login credentials");

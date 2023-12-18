@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "secretKey1234"; // Use a secure secret key
+    private static final String SECRET_KEY = "secretKey1234secretKey1234secretKey1234secretKey1234secretKey1234"; // Use a secure secret key
     private static final long EXPIRATION_TIME = 864_000_000; // 10 days
 
     public static String generateToken(String username) {
