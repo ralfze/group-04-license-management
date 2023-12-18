@@ -120,39 +120,73 @@ const ContractForm = ({ contract, setContract, users, readOnly }) => {
 
             <FormControl>
               <FormLabel>Responsible 01</FormLabel>
-              <Select
-                name="user1"
-                onChange={handleUser1}
-                p="0"
-                readOnly={readOnly}
-              >
-                <option key={"nullkeyone"} value={"no_user"}>No user selected</option>
-                {users && users.map((user) => (
-                  <option key={`${user.id}key`} value={user.id || ''}>{user.firstName}</option>
-                ))
-                }
+              {contract.user1 ? (
+                <Select
+                  name="user1"
+                  onChange={handleUser1}
+                  p="0"
+                  readOnly={readOnly}
+                  value={contract.user1.id || ''}
+                >
+                  <option key={"nullkeyone"} value={"no_user"}>No user selected</option>
+                  {users && users.map((user) => (
+                    <option key={`${user.id}key`} value={user.id || ''}>{user.firstName}</option>
+                  ))
+                  }
 
 
-              </Select>
+                </Select>
+              ) : (
+                <Select
+                  name="user1"
+                  onChange={handleUser1}
+                  p="0"
+                  readOnly={readOnly}
 
+                >
+                  <option key={"nullkeyone"} value={"no_user"}>No user selected</option>
+                  {users && users.map((user) => (
+                    <option key={`${user.id}key`} value={user.id || ''}>{user.firstName}</option>
+                  ))
+                  }
+                </Select>
+              )
+              }
             </FormControl>
 
             <FormControl>
               <FormLabel>Responsible 02</FormLabel>
+              {contract.user2 ? (
+                <Select
+                  name="user2"
+                  onChange={handleUser2}
+                  p="0"
+                  readOnly={readOnly}
+                  value={contract.user2.id || ''}
+                >
+                  <option key={"nullkeytwo"} value={"no_user"}>No user selected</option>
+                  {users && users.map((user) => (
+                    <option key={`${user.id}key`} value={user.id || ''}>{user.firstName}</option>
+                  ))
+                  }
+                </Select>
+              ) : (
+                <Select
+                  name="user2"
+                  onChange={handleUser2}
+                  p="0"
+                  readOnly={readOnly}
 
-              <Select
-                name="user2"
-                onChange={handleUser2}
-                p="0"
-                readOnly={readOnly}
-              >
-                <option key={"nullkeytwo"} value={"no_user"}>No user selected</option>
-                {users && users.map((user) => (
-                  <option key={`${user.id}key`} value={user.id || ''}>{user.firstName}</option>
-                ))
-                }
-              </Select>
+                >
+                  <option key={"nullkeytwo"} value={"no_user"}>No user selected</option>
+                  {users && users.map((user) => (
+                    <option key={`${user.id}key`} value={user.id || ''}>{user.firstName}</option>
+                  ))
+                  }
+                </Select>
 
+              )
+              }
             </FormControl>
 
           </HStack>
