@@ -17,7 +17,7 @@ const EditContractComponent = () => {
       try {
         const response = await ContractService.getContractById(contractId);
         setContract(response.data);
-        //console.log(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error('Error loading contract:', error);
       }
