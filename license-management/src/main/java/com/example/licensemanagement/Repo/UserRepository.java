@@ -12,6 +12,7 @@ import com.example.licensemanagement.Entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findByCustomer(Customer customer);
+    User findByLoginName(String loginName);
 }
 
 

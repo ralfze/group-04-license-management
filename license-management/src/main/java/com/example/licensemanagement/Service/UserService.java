@@ -78,6 +78,6 @@ public class UserService {
     }
 
     public Object getUserByLoginName(String loginName) {
-        return null;
+        return userRepository.findByLoginName(loginName);
     }
 }
