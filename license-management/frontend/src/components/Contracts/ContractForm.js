@@ -1,5 +1,13 @@
-import React from 'react';
-import { VStack, HStack, Input, FormControl, FormLabel, Textarea, Select } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import {
+  VStack,
+  HStack,
+  Input,
+  FormControl,
+  FormLabel,
+  Textarea,
+  Select,
+} from '@chakra-ui/react';
 
 const ContractForm = ({ contract, setContract, users, readOnly }) => {
   const handleChange = (e) => {
@@ -12,25 +20,46 @@ const ContractForm = ({ contract, setContract, users, readOnly }) => {
   };
 
   const handleUser1 = (e) => {
-    const selectedUserId = e.target.value;
-    console.log(users.find((user) => String(user.id) === String(selectedUserId)));
-    setContract((contract) => (
-      {
-        ...contract,
-        user1: users.find((user) => String(user.id) === String(selectedUserId)),
-      }));
-    console.log(contract);
+    if (e.target.value === "no_user") {
+      // set null if no_user is selected
+      setContract((contract) => (
+        {
+          ...contract,
+          user1: null,
+        }));
+    } else {
+      // set selected user by id
+      const selectedUserId = e.target.value;
+      console.log(users.find((user) => String(user.id) === String(selectedUserId)));
+      setContract((contract) => (
+        {
+          ...contract,
+          user1: users.find((user) => String(user.id) === String(selectedUserId)),
+        }));
+    }
+    //console.log(contract);
   }
 
 
   const handleUser2 = (e) => {
-    const selectedUserId = e.target.value;
-    setContract((contract) => (
-      {
-        ...contract,
-        user2: users.find((user) => String(user.id) === String(selectedUserId)),
-      }));
-      console.log(contract);
+    if (e.target.value === "no_user") {
+      // set null if no_user is selected
+      setContract((contract) => (
+        {
+          ...contract,
+          user2: null,
+        }));
+    } else {
+      // set selected user by id
+      const selectedUserId = e.target.value;
+      console.log(users.find((user) => String(user.id) === String(selectedUserId)));
+      setContract((contract) => (
+        {
+          ...contract,
+          user2: users.find((user) => String(user.id) === String(selectedUserId)),
+        }));
+    }
+    //console.log(contract);
   }
 
   return (
@@ -42,9 +71,9 @@ const ContractForm = ({ contract, setContract, users, readOnly }) => {
             <FormControl>
               <FormLabel>Start</FormLabel>
               <Input
-                type="text"
+                type="date"
                 name="startDate"
-                placeholder="Startdate"
+                placeholder="JJJJ-MM-DD"
                 value={contract.startDate || ''}
                 onChange={handleChange}
                 readOnly={readOnly}
@@ -54,9 +83,9 @@ const ContractForm = ({ contract, setContract, users, readOnly }) => {
             <FormControl>
               <FormLabel>End</FormLabel>
               <Input
-                type="text"
+                type="date"
                 name="endDate"
-                placeholder="Enddate"
+                placeholder="JJJJ-MM-DD"
                 value={contract.endDate || ''}
                 onChange={handleChange}
                 readOnly={readOnly}
@@ -93,14 +122,13 @@ const ContractForm = ({ contract, setContract, users, readOnly }) => {
               <FormLabel>Responsible 01</FormLabel>
               <Select
                 name="user1"
-                value={contract.user1 || ''}
                 onChange={handleUser1}
                 p="0"
                 readOnly={readOnly}
               >
-                <option key={"null"} value={null}>{"No user selected"}</option>
+                <option key={"nullkeyone"} value={"no_user"}>No user selected</option>
                 {users && users.map((user) => (
-                  <option value={user.id || ''}>{user.firstName}</option>
+                  <option key={`${user.id}key`} value={user.id || ''}>{user.firstName}</option>
                 ))
                 }
 
@@ -114,14 +142,13 @@ const ContractForm = ({ contract, setContract, users, readOnly }) => {
 
               <Select
                 name="user2"
-                value={contract.user2 || ''}
                 onChange={handleUser2}
                 p="0"
                 readOnly={readOnly}
               >
-                <option value={null}>No user selected</option>
+                <option key={"nullkeytwo"} value={"no_user"}>No user selected</option>
                 {users && users.map((user) => (
-                  <option value={user || ''}>{user.firstName}</option>
+                  <option key={`${user.id}key`} value={user.id || ''}>{user.firstName}</option>
                 ))
                 }
               </Select>
