@@ -1,7 +1,7 @@
 import React from 'react';
 import { VStack, HStack, Input, FormControl, FormLabel, Textarea, Select } from '@chakra-ui/react';
 
-const ContractForm = ({ contract, setContract, readOnly }) => {
+const ContractForm = ({ contract, setContract, users, readOnly }) => {
   const handleChange = (e) => {
     //console.log(e);
     setContract((contract) => (
@@ -12,24 +12,25 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
   };
 
   const handleUser1 = (e) => {
+    const selectedUserId = e.target.value;
+    console.log(users.find((user) => String(user.id) === String(selectedUserId)));
     setContract((contract) => (
       {
         ...contract,
-        user1: {
-          [e.target.name]: e.target.value,
-        },
+        user1: users.find((user) => String(user.id) === String(selectedUserId)),
       }));
+    console.log(contract);
   }
 
 
   const handleUser2 = (e) => {
+    const selectedUserId = e.target.value;
     setContract((contract) => (
       {
         ...contract,
-        user2: {
-          [e.target.name]: e.target.value,
-        },
+        user2: users.find((user) => String(user.id) === String(selectedUserId)),
       }));
+      console.log(contract);
   }
 
   return (
@@ -87,41 +88,46 @@ const ContractForm = ({ contract, setContract, readOnly }) => {
           </HStack>
           {/* Responsible Users */}
           <HStack w="100%">
-            {/*
+
             <FormControl>
               <FormLabel>Responsible 01</FormLabel>
-              {contract.user1 &&
-                <Select
-                  name="user1"
-                  value={contract.user1 || ''}
-                  onChange={handleUser2}
-                  p="0"
-                  readOnly={readOnly}
-                >
-                  <option value={contract.user1 || ''}>{contract.user1.firstName}</option>
-                  <option value="option2" >Option 2</option>
-                  <option value="option3" >Option 3</option>
-                </Select>
-              }
+              <Select
+                name="user1"
+                value={contract.user1 || ''}
+                onChange={handleUser1}
+                p="0"
+                readOnly={readOnly}
+              >
+                <option key={"null"} value={null}>{"No user selected"}</option>
+                {users && users.map((user) => (
+                  <option value={user.id || ''}>{user.firstName}</option>
+                ))
+                }
+
+
+              </Select>
+
             </FormControl>
 
             <FormControl>
               <FormLabel>Responsible 02</FormLabel>
-              {contract.user2 &&
-                <Select
-                  name="user2"
-                  value={contract.user2 || ''}
-                  onChange={handleUser2}
-                  p="0"
-                  readOnly={readOnly}
-                >
-                  <option value={contract.user2 ? contract.user2 : "No user selected" || ''}>{contract.user2 ? contract.user2 : "No user selected" }</option>
-                  <option value="option2" >Option 2</option>
-                  <option value="option3" >Option 3</option>
-                </Select>
-              }
+
+              <Select
+                name="user2"
+                value={contract.user2 || ''}
+                onChange={handleUser2}
+                p="0"
+                readOnly={readOnly}
+              >
+                <option value={null}>No user selected</option>
+                {users && users.map((user) => (
+                  <option value={user || ''}>{user.firstName}</option>
+                ))
+                }
+              </Select>
+
             </FormControl>
-            */}
+
           </HStack>
           {/* ipAddress1 */}
           <HStack w="100%">

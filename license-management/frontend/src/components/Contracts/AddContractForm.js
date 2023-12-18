@@ -15,10 +15,12 @@ import { useNavigate } from 'react-router-dom';
 import ContractForm from './ContractForm';
 import ContractService from '../../services/ContractService';
 import CustomerService from '../../services/CustomerService';
+import UserService from '../../services/UserService';
 
 const AddContractComponent = () => {
   const [contract, setContract] = useState({ customer: {}, user1: null, user2: null });
   const [customers, setCustomers] = useState([]);
+  const [users, setUsers] = useState([]);
   const [selectOption, setSelectOption] = useState("");
   const navigate = useNavigate(); // Get the navigate function from the hook
   // Now, you can use the ContractContractId in your component logic
@@ -26,9 +28,9 @@ const AddContractComponent = () => {
 
   useEffect(() => {
     loadCustomers();
+    loadUsers();
   }
     , [navigate]);
-
 
   const loadCustomers = async () => {
     try {
@@ -37,6 +39,16 @@ const AddContractComponent = () => {
       //console.log(response.data);
     } catch (error) {
       console.error('Error loading customers:', error);
+    }
+  };
+
+  const loadUsers = async () => {
+    try {
+      const response = await UserService.getAllUsers();
+      setUsers(response.data);
+      //console.log(response.data);
+    } catch (error) {
+      console.error('Error loading users:', error);
     }
   };
 
@@ -106,7 +118,7 @@ const AddContractComponent = () => {
             />
           </FormControl>
         </HStack>
-        <ContractForm contract={contract} setContract={setContract} readOnly={false} />
+        <ContractForm contract={contract} setContract={setContract} users={users} readOnly={false} />
         <HStack justify="center" gap="2em">
           <Button w="50%" onClick={handleSave}>Create Contract</Button>
           <Button w="50%" onClick={handleAbort}>Cancel</Button>
