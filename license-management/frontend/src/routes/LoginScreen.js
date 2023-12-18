@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Box, Input, Button, Heading, VStack } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+
 
 const LoginScreen = () => {
   const [loginName, setLoginName] = useState('');
@@ -8,12 +10,28 @@ const LoginScreen = () => {
   // Use the useNavigate hook to get the navigate function
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Perform login logic here
-    console.log(`Logging in with loginName: ${loginName} and password: ${password}`);
+  const baseURL = process.env.REACT_APP_API_BASE_URL;
 
-    // Redirect to the "/customers" route
-    navigate('/customers');
+
+
+  const handleLogin = async () => {
+    // Perform login logic here
+    //console.log(`Logging in with loginName: ${loginName} and password: ${password}`);
+    try {
+      const response = await axios.post(`${baseURL}/api/auth/login`, {
+        loginName,
+        password,
+      });
+
+      const token = response.data;
+      document.cookie = `token=${token}`; // Store token in a cookie
+
+      // Redirect to the "/customers" route
+      //navigate('/customers');
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+
   };
 
   return (
@@ -58,7 +76,7 @@ const LoginScreen = () => {
               mb={4}
             />
             <Button colorScheme="purple" onClick={handleLogin}>
-              Sign in 
+              Sign in
             </Button>
           </Box>
         </VStack>

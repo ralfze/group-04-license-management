@@ -1,10 +1,13 @@
 package com.example.licensemanagement;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,14 +30,21 @@ public class LicenseManagementApplication {
     }
 
     @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        /* 
-        // deprecated way to allow authorization at http
-        http.authorizeRequests()
-            .anyRequest().permitAll()
-            .and()
-        .csrf().disable(); // Disable CSRF for simplicity, you might want to enable it in a production environment
-        */ 
+        /*
+         * // deprecated way to allow authorization at http
+         * http.authorizeRequests()
+         * .anyRequest().permitAll()
+         * .and()
+         * .csrf().disable(); // Disable CSRF for simplicity, you might want to enable
+         * it in a production environment
+         */
         // Allow authorization on http
         http.authorizeHttpRequests((authorizeRequests) -> authorizeRequests.anyRequest().permitAll());
         // Allow cors
